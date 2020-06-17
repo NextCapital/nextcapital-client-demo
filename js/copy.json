@@ -1,5 +1,11 @@
 {
   "tenant": {
     "name": "External API Demo"
+  },
+  "embeddedImplementPlan": {
+    "disclosures": "An example of a copy override for implement plan flow disclosures."
+  },
+  "miniApp": {
+    "startImplement": "Enroll Now"
   }
 }

@@ -37,6 +37,11 @@ body {
       }
     }
   }
+
+  > .current-demo {
+    height: 100%;
+    overflow: auto;
+  }
 }
 
 .demo-page {

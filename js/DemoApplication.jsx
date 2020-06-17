@@ -14,6 +14,8 @@ import PrivateRoute from './components/PrivateRoute';
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedDocVault from './pages/EmbeddedDocVault';
+import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
+import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -26,12 +28,12 @@ const demos = [
   {
     path: 'implement-plan',
     name: 'Embedded Implement Plan',
-    component: null
+    component: EmbeddedImplementDemo
   },
   {
     path: 'quick-plan',
     name: 'Embedded Mini App',
-    component: null
+    component: EmbeddedMiniAppDemo
   },
   {
     path: 'questionnaire',

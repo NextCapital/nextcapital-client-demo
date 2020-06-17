@@ -4,7 +4,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import Highcharts from 'highcharts';
 
-import { ApiClient, configure, startSession, authenticateSession } from 'nextcapital-client';
+import { ApiClient, configure } from 'nextcapital-client';
 
 import environments from './environments';
 import copy from './copy';
