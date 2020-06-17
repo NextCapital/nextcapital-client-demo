@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
+import EmbeddedDocVault from './pages/EmbeddedDocVault';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -20,7 +21,7 @@ const demos = [
   {
     path: 'doc-vault',
     name: 'Embedded Doc Vault',
-    component: null
+    component: EmbeddedDocVault
   },
   {
     path: 'implement-plan',

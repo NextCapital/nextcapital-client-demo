@@ -5,13 +5,8 @@ const environments = {
     authEndpoint: "/as/token.oauth2",
     proxyAuthEndpoint: "https://sit-idp.nextcapital.com",
     proxyEndpoint: "https://sit-pa.nextcapital.com",
-    shouldRetryAuth: false,
-    staticResourcePath: "https://content.nextcapital.com",
-    loginPath: "https://accounts.nextcapital.com",
-    logoutEndpoint: "https://sit-fed.nextcapital.com/logout?tenant=john-hancock",
-    logoutTarget: "https://john-hancock-sit.nextcapital.com/#/login",
-    postMessageTarget: "*",
-    sendPostMessages: false
+    shouldRetryAuth: true,
+    staticResourcePath: "nextcapital-styles/"
   },
   uat: {
     env: "uat",
@@ -19,13 +14,8 @@ const environments = {
     authEndpoint: "/as/token.oauth2",
     proxyAuthEndpoint: "https://uat-idp.nextcapital.com",
     proxyEndpoint: "https://uat-pa.nextcapital.com",
-    shouldRetryAuth: false,
-    staticResourcePath: "https://content.nextcapital.com",
-    loginPath: "https://accounts.nextcapital.com",
-    logoutEndpoint: "https://uat-fed.nextcapital.com/logout?tenant=john-hancock",
-    logoutTarget: "https://john-hancock-uat.nextcapital.com/#/login",
-    postMessageTarget: "*",
-    sendPostMessages: false
+    shouldRetryAuth: true,
+    staticResourcePath: "nextcapital-styles/"
   }
 };
 
