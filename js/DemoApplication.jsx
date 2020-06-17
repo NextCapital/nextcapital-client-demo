@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Redirect,
   Route,
@@ -77,7 +77,7 @@ class DemoApplication extends React.Component {
       console.log('NextCapital Client session initialize logic has completed!');
       this.setState({ isInitializing: false });
     }).catch((ex) => {
-      console('NextCapital Client failed to start session....');
+      console.error('NextCapital Client failed to start session....');
       console.error(ex);
     });
   }
@@ -85,7 +85,7 @@ class DemoApplication extends React.Component {
   renderSidebarTop() {
     return (
       <div className="sidebar-header">
-        <h1 className="title">NextCapital Demo App</h1>
+        <h2 className="title">NextCapital Demo App</h2>
         <button
           className="logout"
           onClick={ () => endSession() }
@@ -105,7 +105,7 @@ class DemoApplication extends React.Component {
           _.map(demos, (demo) => (
             <Link
               key={ demo.path }
-              to={ demo.path }
+              to={ `/demos/${demo.path}` }
             >
               { demo.name }
             </Link>
@@ -120,17 +120,18 @@ class DemoApplication extends React.Component {
     return (
       <div className="current-demo">
         <Switch>
-          <Route exact path="demos/" component={ DemoHome } />
+          <Route exact path="/demos/" component={ DemoHome } />
           {
             _.map(demos, (demo) => (
               <Route
+                exact
                 key={ demo.path }
-                path={ demo.path }
+                path={ `/demos/${demo.path}` }
                 component={ demo.component }
               />
             ))
           }
-          <Route path="demos/*">
+          <Route path="/demos/*">
             DEMO NOT FOUND!
           </Route>
         </Switch>

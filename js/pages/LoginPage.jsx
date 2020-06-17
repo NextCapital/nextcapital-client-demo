@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
 
   render() {
     if (hasSession()) {
-      return (<Redirect to="/demos" />);
+      return (<Redirect to="/demos/" />);
     }
 
     return (
