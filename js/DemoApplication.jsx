@@ -83,13 +83,17 @@ class DemoApplication extends React.Component {
     });
   }
 
+  logout = () => {
+    endSession().finally(() => this.forceUpdate());
+  };
+
   renderSidebarTop() {
     return (
       <div className="sidebar-header">
         <h2 className="title">NextCapital Demo App</h2>
         <button
           className="logout"
-          onClick={ () => endSession() }
+          onClick={ this.logout }
         >
           Logout
         </button>

@@ -57,7 +57,7 @@ body {
   }
 
   > .page-content {
-    padding: 12px;
+    padding: 24px;
     overflow: auto;
   }
 
@@ -66,5 +66,14 @@ body {
       padding: 0;
       overflow: hidden;
     }
+  }
+}
+
+.demo-simple-spacer {
+  display: flex;
+  flex-direction: column;
+
+  > .simple-spacer-child:not(:last-child) {
+    margin-bottom: 12px;
   }
 }

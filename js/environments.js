@@ -6,7 +6,8 @@ const environments = {
     proxyAuthEndpoint: "https://sit-idp.nextcapital.com",
     proxyEndpoint: "https://sit-pa.nextcapital.com",
     shouldRetryAuth: true,
-    staticResourcePath: "nextcapital-styles/"
+    staticResourcePath: "nextcapital-styles/",
+    loginPath: "https://accounts.nextcapital.com"
   },
   uat: {
     env: "uat",
@@ -14,8 +15,9 @@ const environments = {
     authEndpoint: "/as/token.oauth2",
     proxyAuthEndpoint: "https://uat-idp.nextcapital.com",
     proxyEndpoint: "https://uat-pa.nextcapital.com",
-    shouldRetryAuth: true,
-    staticResourcePath: "nextcapital-styles/"
+    shouldRetryAuth: false,
+    staticResourcePath: "nextcapital-styles/",
+    loginPath: "https://accounts.nextcapital.com"
   }
 };
 
