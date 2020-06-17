@@ -3,8 +3,11 @@
   <head>
     <title>NextCapital Client Demo</title>
 
-    <!-- CSS for embedded UIs -->
-    <link rel="stylesheet" type="text/css" href="styles/blocks.css">
+    <!-- NextCapital CSS for embedded UIs -->
+    <link rel="stylesheet" type="text/css" href="nextcapital-styles/blocks.css" />
+
+    <!-- CSS for the demo app. -->
+    <link rel="stylesheet" type="text/css" href="demo.css" />
 
     <!-- Needed to get the demo working. A later iteration will remove. -->
     <script type="text/javascript" src="legacy-stub.js"></script>
@@ -14,9 +17,10 @@
   </head>
   <body>
     <!-- Our bundled file from webpack. This is our main application. -->
+    <!-- Currently, it cannot be placed in HEAD. This will change in the future. -->
     <script type="text/javascript" src="demo.js"></script>
 
-    <div className="render-target">
+    <div class="render-target">
       <span>loading...</span>
     </div>
   </body>

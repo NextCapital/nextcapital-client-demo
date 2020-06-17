@@ -11,7 +11,7 @@ if (!envConfig) {
 }
 
 module.exports = {
-  entry: path.resolve(__dirname, 'js/index.js'),
+  entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',
     path: path.resolve(__dirname, 'dist'),
@@ -37,6 +37,7 @@ module.exports = {
     pdfjs: 'PDFJS'
   },
   resolve: {
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       'nextcapital-client': path.resolve(__dirname, 'nextcapital-client/nextcapital-client.js'),
     }
