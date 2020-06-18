@@ -23,7 +23,7 @@ class FakeConsole {
     this._listeners.push(func);
   }
 
-  removeListeners(func) {
+  removeListener(func) {
     _.pull(this._listeners, func);
   }
 

@@ -2,26 +2,26 @@
 <html>
   <head>
     <title>NextCapital Client Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS for the demo app. -->
     <link rel="stylesheet" type="text/css" href="demo.css" />
 
     <!-- NextCapital CSS for embedded UIs -->
     <link rel="stylesheet" type="text/css" href="nextcapital-styles/blocks.css" />
+  </head>
+  <body>
+    <div class="render-target">
+      <span>loading...</span>
+    </div>
 
-    <!-- Needed to get the demo working. A later iteration will remove. -->
+    <!-- Needed to get the demo working. A later iteration will not need this. -->
     <script type="text/javascript" src="legacy-stub.js"></script>
 
     <!-- We choose to include PDFjs from a CDN for use with the Doc Vault demo. -->
     <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@1.10.100/build/pdf.min.js"></script>
-  </head>
-  <body>
-    <!-- Our bundled file from webpack. This is our main application. -->
-    <!-- Currently, it cannot be placed in HEAD. This will change in the future. -->
-    <script type="text/javascript" src="demo.js"></script>
 
-    <div class="render-target">
-      <span>loading...</span>
-    </div>
+    <!-- Our bundled file from webpack. This is our main application. -->
+    <script type="text/javascript" src="demo.js"></script>
   </body>
 </html>

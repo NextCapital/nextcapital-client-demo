@@ -13,7 +13,7 @@ import DemoApplication from './DemoApplication';
 
 // Expose these on the window for use with the javascript console
 window._ = _;
-window.NCApiClient = ApiClient;
+window.NCApi = ApiClient;
 
 // The NextCapital client should be immediately initialized
 console.log('Configuring NextCapital Client...');

@@ -31,7 +31,7 @@ class EmbeddedQuestionnaire extends React.Component {
     QuestionnaireDemo.save().then(() => (
       this.setState({ isSaving: false })
     )).catch(() => (
-      this.setState({ isFailed: true })
+      this.setState({ isSaving: false, isFailed: true })
     ));
   };
 
@@ -57,7 +57,7 @@ class EmbeddedQuestionnaire extends React.Component {
             >
               Reset
             </button>
-            { ' the questionnaire.'}
+            { ' the questionnaire. These buttons are not provided by the embedded UI.'}
           </div>
           {
             this.state.isFailed && <p>Uh-oh, something went wrong.</p>

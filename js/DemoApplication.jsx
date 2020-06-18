@@ -166,7 +166,7 @@ class DemoApplication extends React.Component {
   render() {
     if (this.state.isInitializing) {
       return (
-        <span>loading...</span>
+        <span>starting session...</span>
       );
     }
 
