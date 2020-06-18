@@ -16,6 +16,7 @@ import DemoHome from './pages/DemoHome';
 import EmbeddedDocVault from './pages/EmbeddedDocVault';
 import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
 import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
+import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -38,7 +39,7 @@ const demos = [
   {
     path: 'questionnaire',
     name: 'Embedded Profile Questionnaire',
-    component: null
+    component: EmbeddedQuestionnaire
   },
   {
     path: 'api-profile',
@@ -86,7 +87,7 @@ class DemoApplication extends React.Component {
   }
 
   logout = () => {
-    endSession().finally(() => this.forceUpdate());
+    endSession().finally(() => window.location.reload());
   };
 
   renderSidebarTop() {
