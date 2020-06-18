@@ -18,6 +18,7 @@ import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
 import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
 import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
+import ProfileApiDemo from './pages/ProfileAPIDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -50,7 +51,7 @@ const demos = [
   {
     path: 'api-profile',
     name: 'Basic Profile API',
-    component: null
+    component: ProfileApiDemo
   },
   {
     path: 'api-accounts',

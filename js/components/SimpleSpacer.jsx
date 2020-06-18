@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import React from 'react';
+import classnames from 'classnames';
 
-const SimpleSpacer = ({ children }) => {
+const SimpleSpacer = ({ children, horizontal }) => {
   const wrappedChildren = React.Children.map(children, (child, index) => {
     if (_.isNil(child)) {
       return null;
@@ -18,7 +19,7 @@ const SimpleSpacer = ({ children }) => {
   });
 
   return (
-    <div className="demo-simple-spacer">
+    <div className={ classnames('demo-simple-spacer', { horizontal }) }>
       { wrappedChildren }
     </div>
   );
