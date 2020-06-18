@@ -45,7 +45,8 @@ module.exports = {
   plugins: [
     // Allows using `process.env.NC_ENV` in webpacked code as normal
     new webpack.DefinePlugin({
-      'process.env.NC_ENV': JSON.stringify(process.env.NC_ENV)
+      'process.env.NC_ENV': JSON.stringify(process.env.NC_ENV),
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   devtool: 'source-map',

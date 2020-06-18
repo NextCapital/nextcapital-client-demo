@@ -42,6 +42,14 @@ body {
     height: 100%;
     overflow: auto;
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    > .demo-sidebar {
+      display: none;
+    }
+  }
 }
 
 .demo-page {
@@ -81,4 +89,26 @@ body {
   > .simple-spacer-child:not(:last-child) {
     margin-bottom: 12px;
   }
+}
+
+.demo-simple-card {
+  border-radius: 6px;
+  border: 1px solid #555;
+
+  > .simple-card-header {
+    font-size: 14pt;
+    padding: 8px 12px;
+    border-bottom: 1px solid #555;
+  }
+
+  > .simple-card-content {
+    padding: 12px;
+  }
+}
+
+.forecast-chart-demo > .page-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 350px;
+  gap: 24px;
 }

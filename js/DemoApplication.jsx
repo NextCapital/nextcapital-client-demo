@@ -17,6 +17,7 @@ import EmbeddedDocVault from './pages/EmbeddedDocVault';
 import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
 import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
 import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
+import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -40,6 +41,11 @@ const demos = [
     path: 'questionnaire',
     name: 'Embedded Profile Questionnaire',
     component: EmbeddedQuestionnaire
+  },
+  {
+    path: 'embedded-charts',
+    name: 'Embedded Forecast Charts',
+    component: EmbeddedForecastCharts
   },
   {
     path: 'api-profile',
