@@ -20,6 +20,7 @@ import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
 import ProfileApiDemo from './pages/ProfileAPIDemo';
 import AccountApiDemo from './pages/AccountAPIDemo';
+import ForecastApiDemo from './pages/ForecastAPIDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -62,7 +63,7 @@ const demos = [
   {
     path: 'api-doc-vault',
     name: 'Forecast API',
-    component: null
+    component: ForecastApiDemo
   },
   {
     path: 'api-doc-vault',
