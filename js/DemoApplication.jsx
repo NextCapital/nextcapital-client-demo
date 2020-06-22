@@ -23,6 +23,7 @@ import AccountApiDemo from './pages/AccountAPIDemo';
 import ForecastApiDemo from './pages/ForecastAPIDemo';
 import DocumentApiDemo from './pages/DocumentAPIDemo';
 import BasicModelUpdateDemo from './pages/BasicModelUpdateDemo';
+import ImplementPlanApiDemo from './pages/ImplementPlanAPIDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -80,7 +81,7 @@ const demos = [
   {
     path: 'api-implement-plan',
     name: 'Implement Plan API',
-    component: null
+    component: ImplementPlanApiDemo
   }
 ];
 
