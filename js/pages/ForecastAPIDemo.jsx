@@ -109,7 +109,7 @@ class ForecastApiDemo extends React.Component {
     return (
       <Page title="Forecast API">
         <SimpleSpacer>
-          <p>This demo will read basic account, income, and contribution data over the API.</p>
+          <p>This demo will run a forecast over the API.</p>
           <SimpleSpacer horizontal>
             <button
               onClick={ () => this.runDemo() }
