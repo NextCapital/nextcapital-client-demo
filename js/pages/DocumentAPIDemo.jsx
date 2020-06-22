@@ -70,6 +70,7 @@ class DocumentApiDemo extends React.Component {
   async getProposalPDF() {
     this.setState({ isDownloading: true });
 
+    // Find the correct expense to get a proposal PDF for
     this.console.log('getting retirement...');
     const primaryPerson = await ApiClient.IndividualModel.readPrimaryPerson();
     await primaryPerson.readCashFlows();
@@ -84,8 +85,10 @@ class DocumentApiDemo extends React.Component {
       return;
     }
 
+    // Server runs forecasts and generates the PDF
     const proposal = await retirementCashFlow.getLatestProposal();
 
+    // Then, we can download its data
     this.console.log('downloading proposal....');
     await proposal.download();
 

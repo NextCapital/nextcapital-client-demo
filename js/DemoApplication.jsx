@@ -22,6 +22,7 @@ import ProfileApiDemo from './pages/ProfileAPIDemo';
 import AccountApiDemo from './pages/AccountAPIDemo';
 import ForecastApiDemo from './pages/ForecastAPIDemo';
 import DocumentApiDemo from './pages/DocumentAPIDemo';
+import BasicModelUpdateDemo from './pages/BasicModelUpdateDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -74,7 +75,7 @@ const demos = [
   {
     path: 'api-model-updates',
     name: 'Basic Model Updates',
-    component: null
+    component: BasicModelUpdateDemo
   },
   {
     path: 'api-implement-plan',
