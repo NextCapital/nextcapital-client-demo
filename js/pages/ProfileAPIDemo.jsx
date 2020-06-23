@@ -116,7 +116,8 @@ class ProfileApiDemo extends React.Component {
       this.console.logError('retirement not found... that is odd...');
     }
 
-    // profile questionnaire
+    // Get profile questionnaire and its answers. Questionnaire/question models are shared, but
+    // answers are specific to a given person, so they are accessed via the person model.
     this.console.log('reading profile questionnaire...');
     await primaryPerson.readQuestionnaires();
 

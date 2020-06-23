@@ -1,3 +1,8 @@
+/**
+ * These are the available environments for the demo application. These should not need to
+ * be modified. While you can probably figure out the production config if you are clever, we
+ * ask that you please do not.
+ */
 const environments = {
   sit: {
     env: "sit",

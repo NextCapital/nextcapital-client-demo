@@ -25,6 +25,7 @@ class LoginPage extends React.Component {
   performLogin = () => {
     this.setState({ isLoading: true })
 
+    // This demo uses username/password for auth. A real product would... not.
     return authenticateSession({
       username: this.state.username,
       password: this.state.password
@@ -36,7 +37,7 @@ class LoginPage extends React.Component {
   };
 
   render() {
-    if (hasSession()) {
+    if (hasSession()) { // don't show login page if logged in!
       return (<Redirect to="/demos/" />);
     }
 

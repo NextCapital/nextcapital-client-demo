@@ -22,6 +22,10 @@ class DocumentApiDemo extends React.Component {
     this.console = new FakeConsole();
   }
 
+  /**
+   * Handles getting the document list (with custodian sync) and downloading file data
+   * to memory.
+   */
   async makeApiCalls() {
     this.console.log('get existing documents + fetching custodian documents...');
     const documents = await ApiClient.FileModel.readAll({
@@ -67,6 +71,9 @@ class DocumentApiDemo extends React.Component {
     });
   }
 
+  /**
+   * Generates and downloads a retirement proposal PDF. A popup save dialog will appear.
+   */
   async getProposalPDF() {
     try {
       this.setState({ isDownloading: true });

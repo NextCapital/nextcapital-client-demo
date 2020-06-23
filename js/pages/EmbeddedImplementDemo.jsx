@@ -4,7 +4,15 @@ import { ImplementPlanDemo } from 'nextcapital-client';
 
 import Page from '../components/Page';
 
+/**
+ * An embedded application that renders a complete implement plan flow, identical to that
+ * of the one in the main NextCapital UI. This includes the DocuSign flow.
+ */
 class EmbeddedImplementDemo extends React.Component {
+  /**
+   * When we first render, we need to initialize the app. We can also provide callbacks
+   * for when the demo is exited, or the user becomes enrolled.
+   */
   componentDidMount() {
     ImplementPlanDemo.configure({
       onExit: () => window.alert('Flow exited!'),
@@ -12,6 +20,9 @@ class EmbeddedImplementDemo extends React.Component {
     });
   }
 
+  /**
+   * Apart from that, just one line of code to render the demo.
+   */
   render() {
     return (
       <Page

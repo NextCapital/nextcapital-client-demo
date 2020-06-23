@@ -40,35 +40,37 @@ class BasicModelUpdateDemo extends React.Component {
     this.console.log(`current first name: ${primaryPerson.firstName}`);
     this.console.log(`current salary: ${salary.amount}`);
 
-    // Update the first name if need be
+    // Update the first name if need be. We can't update the real model, so we need to
+    // clone it first. We can then update and save the clone. Once saved, the changes will
+    // persist to the `real` model.
     const personClone = primaryPerson.createClone();
     personClone.firstName = this.state.firstName;
 
-    if (personClone.isDirty()) {
+    if (personClone.isDirty()) { // Clones support dirty checking!
       this.console.log(`Updating first name to ${personClone.firstName}...`);
       await personClone.save();
 
       if (personClone.firstName === primaryPerson.firstName) {
         this.console.log('First name updated!');
       } else {
-        this.console.logError('First name did not persist! this should not happen!');
+        this.console.logError('First name did not persist! This should not happen!');
       }
     } else {
       this.console.log(`First name was not modified! Skipping update...`);
     }
 
-    // Update the salary if need be
+    // Update the salary if need be. We need to clone here as well.
     const salaryClone = salary.createClone();
     salaryClone.amount = newSalary;
 
-    if (salaryClone.isDirty()) {
+    if (salaryClone.isDirty()) { // Clones support dirty checking!
       this.console.log(`Updating salary amount to ${salaryClone.amount}...`);
       await salaryClone.save();
 
       if (salaryClone.amount === salary.amount) {
         this.console.log('Salary amount updated!');
       } else {
-        this.console.logError('Salary amount did not persist! this should not happen!');
+        this.console.logError('Salary amount did not persist! This should not happen!');
       }
     } else {
       this.console.log(`Salary amount was not modified! Skipping update...`);

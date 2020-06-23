@@ -7,6 +7,12 @@ import Page from '../components/Page';
 import SimpleSpacer from '../components/SimpleSpacer';
 import SimpleCard from '../components/SimpleCard';
 
+/**
+ * This demo simulates how we would embed our React content in a non-react Application.
+ *
+ * Since our demo app is built in React, we use React Refs to simulate rendering in an
+ * arbitrary DOM node.
+ */
 class EmbeddedForecastCharts extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +35,13 @@ class EmbeddedForecastCharts extends React.Component {
     this.renderCharts();
   }
 
+  /**
+   * Renders each chart in its appropriate React ref. The charts should automatically
+   * update from now on. We will need to re-render manually if something like the `tier`
+   * changes.
+   *
+   * Each chart requires a single line of code to render.
+   */
   renderCharts() {
     if (this.assetClassPieRef.current) {
       ForecastChartDemo.renderAssetClass(
@@ -79,6 +92,9 @@ class EmbeddedForecastCharts extends React.Component {
     );
   }
 
+  /**
+   * Notably, we render an empty div with a ref for the chart to render in.
+   */
   renderChartCard(title, ref) {
     return (
       <SimpleCard title={ title }>

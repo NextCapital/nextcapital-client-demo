@@ -9,6 +9,19 @@ import Page from '../components/Page';
 import DemoConsole from '../components/DemoConsole';
 import SimpleSpacer from '../components/SimpleSpacer';
 
+/**
+ * This demo shows how to make a forecast, and get information from both the forecast results
+ * and the advice models the forecast generates.
+ *
+ * Notably, this uses the `LegacyForecast` API. This API provides forecast results in the same
+ * format as the `Plan` section uses for the `nextcapital.com` UI. Eventually, we don't know
+ * quite when yet, we intend to replace this with an updated v2 forecast stack.
+ *
+ * This v2 forecast stack would be, among other things, significantly faster. This anticipated
+ * thrash makes the forecast APIs a good candidate for "bundling" for external use: this way, we
+ * can more easily maintain a more consistent schema even while changing the underlying forecast
+ * code.
+ */
 class ForecastApiDemo extends React.Component {
   constructor(props) {
     super(props);

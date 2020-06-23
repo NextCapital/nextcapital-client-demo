@@ -6,6 +6,9 @@ import {
 
 import { hasSession } from 'nextcapital-client';
 
+/**
+ * A Route that redirects to the login page if not logged-in.
+ */
 const PrivateRoute = ({ children, ...props }) => (
   <Route
     {...props}

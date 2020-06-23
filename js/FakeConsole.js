@@ -1,5 +1,9 @@
 import _ from 'lodash';
 
+/**
+ * The model for the DemoConsole component. This is a simple console that allows logging
+ * messages.
+ */
 class FakeConsole {
   constructor() {
     this._messages = [];

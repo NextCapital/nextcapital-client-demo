@@ -28,6 +28,7 @@ import ImplementPlanApiDemo from './pages/ImplementPlanApiDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
+// Defines the set of demos in the app. Combines a route, display name, and page component.
 const demos = [
   {
     path: 'doc-vault',
@@ -100,6 +101,10 @@ class DemoApplication extends React.Component {
     };
   }
 
+  /**
+   * When the application mounts, recover the session. If login is needed, the app will route to
+   * the login page automatically.
+   */
   componentDidMount() {
     console.log('Start NextCapital Client session...');
     startSession({
@@ -114,6 +119,9 @@ class DemoApplication extends React.Component {
     });
   }
 
+  /**
+   * Ends the current session, reloading the page when complete to clear any cached models.
+   */
   logout = () => {
     endSession().finally(() => window.location.reload());
   };
@@ -132,6 +140,9 @@ class DemoApplication extends React.Component {
     );
   }
 
+  /**
+   * Renders a Link to each demo.
+   */
   renderSidebar() {
     return (
       <div className="demo-sidebar">
@@ -152,6 +163,9 @@ class DemoApplication extends React.Component {
     );
   }
 
+  /**
+   * Renders a Route for each demo. See `react-router` documentation.
+   */
   renderCurrentDemo() {
     return (
       <div className="current-demo">
@@ -191,6 +205,9 @@ class DemoApplication extends React.Component {
       );
     }
 
+    /**
+     * Renders the login page or the current demo. See `react-router` documentation.
+     */
     return (
       <Router>
         <div className="demo-application">

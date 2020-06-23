@@ -1,3 +1,4 @@
+// These are the externals you will need to provide the client
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
@@ -15,7 +16,7 @@ import DemoApplication from './DemoApplication';
 window._ = _;
 window.NCApi = ApiClient;
 
-// The NextCapital client should be immediately initialized
+// The NextCapital client should be immediately configured, before any other code runs
 console.log('Configuring NextCapital Client...');
 configure({
   environment: environments[process.env.NC_ENV],

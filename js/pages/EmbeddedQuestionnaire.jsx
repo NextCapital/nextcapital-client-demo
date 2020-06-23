@@ -5,6 +5,14 @@ import { QuestionnaireDemo } from 'nextcapital-client';
 import Page from '../components/Page';
 import SimpleSpacer from '../components/SimpleSpacer';
 
+/**
+ * This demo attempts to show two-way communication between an Embedded UI and the UI that is
+ * embedding in.
+ *
+ * As we can see, this requires a bit more work than embedding an entire application. We need no
+ * make sure the outer app re-renders whenever a change occurs and the outer application needs to
+ * handle significantly more logic.
+ */
 class EmbeddedQuestionnaire extends React.Component {
   constructor(props) {
     super(props);

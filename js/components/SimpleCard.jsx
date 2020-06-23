@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Renders a simple card with title and content.
+ */
 const SimpleCard = (props) => (
   <div className="demo-simple-card">
     <div className="simple-card-header">

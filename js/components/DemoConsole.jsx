@@ -2,6 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import classnames from 'classnames';
 
+/**
+ * Render a `FakeConsole` model. Updates whenever something is written to it automatically.
+ */
 class DemoConsole extends React.Component {
   _render = () => this.setState({});
 

@@ -2,6 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import classnames from 'classnames';
 
+/**
+ * Renders children with space between them, either vertically or horizontally.
+ */
 const SimpleSpacer = ({ children, horizontal }) => {
   const wrappedChildren = React.Children.map(children, (child, index) => {
     if (_.isNil(child)) {

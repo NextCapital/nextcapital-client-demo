@@ -7,7 +7,7 @@ const environments = require('./js/environments');
 const envConfig = environments[process.env.NC_ENV];
 
 if (!envConfig) {
-  throw new Error('set the NC_ENV environment variable before running');
+  throw new Error('set the NC_ENV environment variable before running!');
 }
 
 module.exports = {
@@ -26,13 +26,13 @@ module.exports = {
         }
       },
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/, // runs all custom js through babel
         include: [path.resolve(__dirname, 'js')],
         use: ['babel-loader']
       }
     ]
   },
-  externals: {
+  externals: { // These are included as separate <script> tags
     'nextcapital-api': 'NCApi',
     pdfjs: 'PDFJS'
   },
@@ -52,7 +52,7 @@ module.exports = {
   devtool: 'source-map',
   mode: 'development',
   target: 'web',
-  devServer: {
+  devServer: { // Config for `npm run start` dev server
     port: 8080,
     contentBase: path.join(__dirname, 'dist'),
     https: false,
