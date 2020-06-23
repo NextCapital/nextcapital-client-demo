@@ -68,32 +68,37 @@ class DocumentApiDemo extends React.Component {
   }
 
   async getProposalPDF() {
-    this.setState({ isDownloading: true });
+    try {
+      this.setState({ isDownloading: true });
 
-    // Find the correct expense to get a proposal PDF for
-    this.console.log('getting retirement...');
-    const primaryPerson = await ApiClient.IndividualModel.readPrimaryPerson();
-    await primaryPerson.readCashFlows();
+      // Find the correct expense to get a proposal PDF for
+      this.console.log('getting retirement...');
+      const primaryPerson = await ApiClient.IndividualModel.readPrimaryPerson();
+      await primaryPerson.readCashFlows();
 
-    const retirementCashFlow = primaryPerson.retirementCashFlow;
+      const retirementCashFlow = primaryPerson.retirementCashFlow;
 
-    if (retirementCashFlow) {
-      this.console.log(`getting proposal PDF for cash flow ${retirementCashFlow.id}... please wait...`);
-    } else {
-      this.console.logError('uh-oh: no retirement cash flow found...');
+      if (retirementCashFlow) {
+        this.console.log(`getting proposal PDF for cash flow ${retirementCashFlow.id}... please wait...`);
+      } else {
+        this.console.logError('uh-oh: no retirement cash flow found...');
+        this.setState({ isDownloading: false });
+        return;
+      }
+
+      // Server runs forecasts and generates the PDF
+      const proposal = await retirementCashFlow.getLatestProposal();
+
+      // Then, we can download its data
+      this.console.log('downloading proposal....');
+      await proposal.download();
+
+      this.console.log('done!');
+    } catch (ex) {
+      this.console.logError(ex.message);
+    } finally {
       this.setState({ isDownloading: false });
-      return;
     }
-
-    // Server runs forecasts and generates the PDF
-    const proposal = await retirementCashFlow.getLatestProposal();
-
-    // Then, we can download its data
-    this.console.log('downloading proposal....');
-    await proposal.download();
-
-    this.console.log('done!');
-    this.setState({ isDownloading: false });
   }
 
   reset() {

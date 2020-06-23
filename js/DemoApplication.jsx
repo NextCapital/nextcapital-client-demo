@@ -18,12 +18,13 @@ import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
 import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
 import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
-import ProfileApiDemo from './pages/ProfileAPIDemo';
-import AccountApiDemo from './pages/AccountAPIDemo';
-import ForecastApiDemo from './pages/ForecastAPIDemo';
-import DocumentApiDemo from './pages/DocumentAPIDemo';
+import CopyDebugger from './pages/CopyDebugger';
+import ProfileApiDemo from './pages/ProfileApiDemo';
+import AccountApiDemo from './pages/AccountApiDemo';
+import ForecastApiDemo from './pages/ForecastApiDemo';
+import DocumentApiDemo from './pages/DocumentApiDemo';
 import BasicModelUpdateDemo from './pages/BasicModelUpdateDemo';
-import ImplementPlanApiDemo from './pages/ImplementPlanAPIDemo';
+import ImplementPlanApiDemo from './pages/ImplementPlanApiDemo';
 
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
@@ -52,6 +53,11 @@ const demos = [
     path: 'embedded-charts',
     name: 'Embedded Forecast Charts',
     component: EmbeddedForecastCharts
+  },
+  {
+    path: 'copy-debugger',
+    name: 'Copy Debugger',
+    component: CopyDebugger
   },
   {
     path: 'api-profile',

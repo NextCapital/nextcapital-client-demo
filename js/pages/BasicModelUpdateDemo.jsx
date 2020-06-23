@@ -96,7 +96,7 @@ class BasicModelUpdateDemo extends React.Component {
     return (
       <Page title="Basic Model Updates">
         <SimpleSpacer>
-          <p>This demo show how to make basic model updates over the API.</p>
+          <p>This demo show how to make basic model updates over the API. Any updates should be reflected in the embedded Uis.</p>
           <SimpleSpacer horizontal>
             <button
               onClick={ () => this.runDemo() }

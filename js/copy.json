@@ -6,6 +6,10 @@
     "disclosures": "An example of a copy override for implement plan flow disclosures."
   },
   "miniApp": {
-    "startImplement": "Enroll Now"
+    "startImplement": "Enroll Now",
+    "pendingPopup": {
+      "title": "Plan Pending",
+      "description": "We are working to implement your plan. Please check back later."
+    }
   }
 }
