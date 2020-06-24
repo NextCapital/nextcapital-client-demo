@@ -9,20 +9,17 @@
 
     <!-- NextCapital CSS for embedded UIs -->
     <link rel="stylesheet" type="text/css" href="nextcapital-styles/blocks.css" />
+
+    <!-- We choose to include PDFjs from a CDN for use with the Doc Vault demo. -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfjs-dist@1.10.100/build/pdf.min.js" defer></script>
+
+    <!-- Our bundled file from webpack. This is our main application. -->
+    <script type="text/javascript" src="demo.js" defer></script>
   </head>
   <body>
     <!-- The application will replace the content if this node. -->
     <div class="render-target">
       <span>loading...</span>
     </div>
-
-    <!-- Needed to get the demo working. A later iteration will not need this. -->
-    <script type="text/javascript" src="legacy-stub.js"></script>
-
-    <!-- We choose to include PDFjs from a CDN for use with the Doc Vault demo. -->
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@1.10.100/build/pdf.min.js"></script>
-
-    <!-- Our bundled file from webpack. This is our main application. -->
-    <script type="text/javascript" src="demo.js"></script>
   </body>
 </html>

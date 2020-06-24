@@ -33,7 +33,6 @@ module.exports = {
     ]
   },
   externals: { // These are included as separate <script> tags
-    'nextcapital-api': 'NCApi',
     pdfjs: 'PDFJS'
   },
   resolve: {

@@ -117,7 +117,7 @@ class ImplementPlanApiDemo extends React.Component {
             return true;
           };
 
-          this.console.log('not yet implemented... trying agin...');
+          this.console.log('not yet implemented... trying again...');
           return false;
         }
       });

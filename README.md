@@ -70,9 +70,11 @@ See 'Important Notes` below for some additional disclaimers.
 - This demo seeks only to show the possibilities of what NextCapital can do with a client *today*. The client was created specifically for this demo. Additional demos and changes are possible upon request.
 - Authentication currently uses username/password login. This would NOT be the case for a production-ready client. Overall, expect the authentication lifecycle to be significantly refactored in a production-ready client.
 - Our v2 API is still in-development and is both subject to change and not ready for production use externally. Significant work is required to get this API ready for external use. However, embedded UIs are much safer and easier to get production-ready quickly.
+- Some functionality available on the v1 API used on `nextcapital.com` is not yet available on the v2 API. More functionality will become available over time.
 - As the v2 API is not yet hardened, it is possible to get models in a bad state of a malformed request is sent. Hence, please only use the provided SIT and UAT environments.
 - While soon all UIs will work on mobile, currently we are probably only 80% there. We expect this to change rapidly.
 - Feel free to play with the entire v2 API, even stuff that is not demoed.
+- Our custom UI framework has a known issue where resolved promises will flash a loading spinner in the UI. We expect this to be fixed shortly.
 - Only browsers more recent than IE11 are supported.
 
 ## Have questions?

@@ -80,6 +80,14 @@ body {
       overflow: hidden;
     }
   }
+
+  @media (max-width: 600px) {
+    grid-template-rows: 40px 1fr;
+
+    > .page-title {
+      font-size: 16pt;
+    }
+  }
 }
 
 .demo-simple-spacer {
@@ -120,6 +128,10 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 350px;
   gap: 24px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .demo-console {
