@@ -2,11 +2,13 @@
   "name": "external-api-demo",
   "version": "1.0.0",
   "description": "Demo of external NextCapital API and embeddable UI",
+  "author": "NextCapital Group",
+  "license": "UNLICENSED",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
     "build:styles": "node-sass ./styles/demo.scss ./dist/demo.css",
+    "clean": "rm -rf dist",
     "copy": "cp -a ./static/ ./dist",
     "start": "npm run clean && npm run copy && npm run build:styles && webpack-dev-server --config=./webpack.config.js --watch",
     "start:sit": "NC_ENV=sit npm run start",
@@ -34,7 +36,5 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
-  },
-  "author": "NextCapital Group",
-  "license": "UNLICENSED"
+  }
 }
