@@ -50,9 +50,10 @@ body {
     > .sidebar-links {
       display: flex;
       flex-direction: column;
+      margin-bottom: 20px;
 
       > a {
-        margin-bottom: 6px;
+        margin-top: 8px;
       }
     }
   }
@@ -84,7 +85,7 @@ body {
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #555;
-
+    background-color: #eee;
     font-size: 28pt;
   }
 
@@ -130,11 +131,13 @@ body {
 .demo-simple-card {
   border-radius: 6px;
   border: 1px solid #555;
+  background-color: #fff;
 
   > .simple-card-header {
     font-size: 14pt;
     padding: 8px 12px;
     border-bottom: 1px solid #555;
+    background-color: #eee;
   }
 
   > .simple-card-content {
@@ -147,6 +150,7 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 350px;
   gap: 24px;
+  background-color: #eee;
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;

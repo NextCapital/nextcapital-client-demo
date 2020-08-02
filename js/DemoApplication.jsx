@@ -48,37 +48,35 @@ import ImplementPlanApiDemo from './pages/ImplementPlanApiDemo';
 import { hasSession, endSession, startSession } from 'nextcapital-client';
 
 // Defines the set of demos in the app. Combines a route, display name, and page component.
-const demos = [
-  {
-    path: 'doc-vault',
-    name: 'Embedded Doc Vault',
-    component: EmbeddedDocVault
-  },
-  {
-    path: 'implement-plan',
-    name: 'Embedded Implement Plan',
-    component: EmbeddedImplementDemo
-  },
-  {
-    path: 'quick-plan',
-    name: 'Embedded Mini App',
-    component: EmbeddedMiniAppDemo
-  },
-  {
-    path: 'questionnaire',
-    name: 'Embedded Profile Questionnaire',
-    component: EmbeddedQuestionnaire
-  },
+const embeddedAppApiDemos = [
   {
     path: 'embedded-charts',
-    name: 'Embedded Forecast Charts',
+    name: 'Forecast Charts',
     component: EmbeddedForecastCharts
   },
   {
-    path: 'copy-debugger',
-    name: 'Copy Debugger',
-    component: CopyDebugger
+    path: 'quick-plan',
+    name: 'Planning & Advice',
+    component: EmbeddedMiniAppDemo
   },
+  {
+    path: 'implement-plan',
+    name: 'Implement Plan',
+    component: EmbeddedImplementDemo
+  },
+  {
+    path: 'doc-vault',
+    name: 'Doc Vault',
+    component: EmbeddedDocVault
+  },
+  {
+    path: 'questionnaire',
+    name: 'Profile Questionnaire',
+    component: EmbeddedQuestionnaire
+  }
+];
+
+const dataApiDemos = [
   {
     path: 'api-profile',
     name: 'Basic Profile API',
@@ -95,6 +93,11 @@ const demos = [
     component: ForecastApiDemo
   },
   {
+    path: 'api-implement-plan',
+    name: 'Implement Plan API',
+    component: ImplementPlanApiDemo
+  },
+  {
     path: 'api-doc-vault',
     name: 'Documents API',
     component: DocumentApiDemo
@@ -103,13 +106,18 @@ const demos = [
     path: 'api-model-updates',
     name: 'Basic Model Updates',
     component: BasicModelUpdateDemo
-  },
-  {
-    path: 'api-implement-plan',
-    name: 'Implement Plan API',
-    component: ImplementPlanApiDemo
   }
 ];
+
+const miscDemos = [
+  {
+    path: 'copy-debugger',
+    name: 'Copy Debugger',
+    component: CopyDebugger
+  }
+];
+
+const demos = embeddedAppApiDemos.concat(dataApiDemos, miscDemos);
 
 class DemoApplication extends React.Component {
   constructor(props) {
@@ -167,16 +175,43 @@ class DemoApplication extends React.Component {
       <div className="demo-sidebar">
         { this.renderSidebarTop() }
         <div className="sidebar-links">
-        {
-          _.map(demos, (demo) => (
-            <Link
-              key={ demo.path }
-              to={ `/demos/${demo.path}` }
-            >
-              { demo.name }
-            </Link>
-          ))
-        }
+          <h3>Embedded App API Demos</h3>
+          {
+            _.map(embeddedAppApiDemos, (demo) => (
+              <Link
+                key={ demo.path }
+                to={ `/demos/${demo.path}` }
+              >
+                { demo.name }
+              </Link>
+            ))
+          }
+        </div>
+        <div className="sidebar-links">
+          <h3>Data API Demos</h3>
+          {
+            _.map(dataApiDemos, (demo) => (
+              <Link
+                key={ demo.path }
+                to={ `/demos/${demo.path}` }
+              >
+                { demo.name }
+              </Link>
+            ))
+          }
+        </div>
+        <div className="sidebar-links">
+          <h3>Misc Demos</h3>
+          {
+            _.map(miscDemos, (demo) => (
+              <Link
+                key={ demo.path }
+                to={ `/demos/${demo.path}` }
+              >
+                { demo.name }
+              </Link>
+            ))
+          }
         </div>
       </div>
     );

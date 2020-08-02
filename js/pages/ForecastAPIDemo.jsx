@@ -93,6 +93,8 @@ class ForecastApiDemo extends React.Component {
     this.console.log(`forecast wealth at retirement: ${forecast.wealthAtRetirement}`);
     this.console.log(`sustainable income: ${forecast.incomeAtRetirement}`);
     this.console.log(`target spending: ${forecast.targetSpending}`);
+    this.console.log(`wealth projection: ${JSON.stringify(forecast.preferredWealthOverTime)}`);
+    this.console.log(`income projection: ${JSON.stringify(forecast.getGroupedIncomeProjectionsInRetirement())}`);
 
     // Find the advice expense
     this.console.log('getting forecast advice expense....'); // technically, already loaded
