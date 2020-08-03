@@ -34,7 +34,7 @@ import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedDocVault from './pages/EmbeddedDocVault';
 import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
-import EmbeddedMiniAppDemo from './pages/EmbeddedMiniAppDemo';
+import EmbeddedPlanningAppDemo from './pages/EmbeddedPlanningAppDemo';
 import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
 import CopyDebugger from './pages/CopyDebugger';
@@ -57,7 +57,7 @@ const embeddedAppApiDemos = [
   {
     path: 'quick-plan',
     name: 'Planning & Advice',
-    component: EmbeddedMiniAppDemo
+    component: EmbeddedPlanningAppDemo
   },
   {
     path: 'implement-plan',
