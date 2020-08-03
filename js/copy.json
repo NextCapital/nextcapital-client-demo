@@ -5,7 +5,7 @@
   "embeddedImplementPlan": {
     "disclosures": "An example of a copy override for implement plan flow disclosures."
   },
-  "miniApp": {
+  "planningApp": {
     "startImplement": "Enroll Now",
     "pendingPopup": {
       "title": "Plan Pending",

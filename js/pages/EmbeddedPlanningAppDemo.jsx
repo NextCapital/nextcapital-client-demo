@@ -19,7 +19,7 @@
 
 import React from 'react';
 
-import { EmbeddedMiniApp } from 'nextcapital-client';
+import { PlanningAppDemo } from 'nextcapital-client';
 
 import Page from '../components/Page';
 
@@ -33,12 +33,12 @@ import Page from '../components/Page';
  * NOTE: This is a incomplete demo app. Some functionality may be missing or broken. This is
  * not representative of a final/shipping/real product.
  */
-class EmbeddedMiniAppDemo extends React.Component {
+class EmbeddedPlanningAppDemo extends React.Component {
   /**
    * We need to initialize the app when it first renders.
    */
   componentDidMount() {
-    EmbeddedMiniApp.configure({
+    PlanningAppDemo.configure({
       onExit: () => window.alert('Flow exited!'),
       onEnrolled: () => window.alert('Enrolled!')
     });
@@ -53,10 +53,10 @@ class EmbeddedMiniAppDemo extends React.Component {
         title="Planning & Advice"
         fullScreen
       >
-        { EmbeddedMiniApp.render() }
+        { PlanningAppDemo.render() }
       </Page>
     );
   }
 }
 
-export default EmbeddedMiniAppDemo;
+export default EmbeddedPlanningAppDemo;
