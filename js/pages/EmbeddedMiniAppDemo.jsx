@@ -50,7 +50,7 @@ class EmbeddedMiniAppDemo extends React.Component {
   render() {
     return (
       <Page
-        title="Embedded Mini App"
+        title="Planning & Advice"
         fullScreen
       >
         { EmbeddedMiniApp.render() }
