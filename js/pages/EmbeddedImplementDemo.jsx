@@ -45,7 +45,7 @@ class EmbeddedImplementDemo extends React.Component {
   render() {
     return (
       <Page
-        title="Embedded Implement Plan"
+        title="Embedded Implement Plan (Retail)"
         fullScreen
       >
         { ImplementPlanDemo.render() }
