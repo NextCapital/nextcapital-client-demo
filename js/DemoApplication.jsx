@@ -56,12 +56,17 @@ const embeddedAppApiDemos = [
   },
   {
     path: 'quick-plan',
-    name: 'Planning & Advice',
+    name: 'NextGen UI (Workplace)',
+    component: 'NextGen UI'
+  },
+  {
+    path: 'quick-plan-retail',
+    name: 'Planning & Advice (Retail)',
     component: EmbeddedPlanningAppDemo
   },
   {
     path: 'implement-plan',
-    name: 'Implement Plan',
+    name: 'Implement Plan (Retail)',
     component: EmbeddedImplementDemo
   },
   {
