@@ -30,7 +30,7 @@ import Page from '../components/Page';
  * bugfixes automatically. Breaking changes to the consuming application would be extremely
  * rare.
  *
- * NOTE: This is a incomplete demo app, deisgned to show the NextGen summary page with a button that
+ * NOTE: This is a incomplete demo app, designed to show the NextGen summary page with a button that
  * launches PIO for retail users. Some functionality may be missing or broken. This is not
  * representative of a final/shipping/real product.
  */

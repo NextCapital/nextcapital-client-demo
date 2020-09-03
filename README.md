@@ -33,6 +33,7 @@ Once the server is running, open `http://localhost:8080` in a browser to view th
 - Each demo lives within the `js/pages` folder.
   - These demos use shared React components from the `js/components` folder.
 - The main HTML page the application uses is `static/index.html`.
+- The webpack config (`webpack.config.js`) defines how the app is built, and also sets up the (required) CORS proxy.
 - The embedded UIs require CSS. This can be found in the `static/nextcapital-styles` folder.
   - This should not be modified, per the copyright notice in the folder.
 - The main nextcapital client javascript lives in the `nextcapital-client` folder. Eventually, this (and the aforementioned CSS) would be delivered via an alternate means. The current setup is the easiest delivery method for now.
@@ -66,7 +67,7 @@ Notably, these UIs are all built in NextCapital's in-house application framework
 - Some demos are for retail users, and others are for workplace users. Demos intended for one use case will still "work" for a user designed for the other, but note that this isn't a supported use case.
   - This demo is being shared between multiple partners
   - Some partners use retail, and others workplace
-- Authentication currently uses username/password login. This would not be the case for a production-ready client. Overall, expect the authentication lifecycle to be refactored in a production-ready client.
+- Authentication currently uses username/password or jwt login. Overall, expect the authentication lifecycle to be refactored in a production-ready client.
 - Our API is still in-development and is subject to change. Work is required to get prepare the API for external use.
   - Embedded UIs are much safer and easier to get production-ready quickly.
   - At launch, we will likely only provide indirect access to a subset of APIs
@@ -106,7 +107,7 @@ Thus, we would recommend using our JavaScript API client on the client-side to i
 
 To make exploring the API Client easier, we've exposed the API client as `NCApi` and [lodash](https://lodash.com/docs/4.17.15) as `_` on `window`. You can easily play with the API via the command line with developer tools.
 
-See the "Important Notes" section below for some additional disclaimers. We do not expect to provide raw API access at launch (instead providing indirect access), but may provide raw access down the road.
+See the "Important Notes" section above for some additional disclaimers. We do not expect to provide raw API access at launch (instead providing indirect access), but may provide raw access down the road.
 
 ## NOTICE
 
