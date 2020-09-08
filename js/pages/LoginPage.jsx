@@ -37,18 +37,21 @@ class LoginPage extends React.Component {
       isLoading: false,
       isFailed: false,
       username: '',
-      password: ''
+      password: '',
+      jwt: ''
     };
   }
 
   performLogin = () => {
     this.setState({ isLoading: true })
 
-    // This demo uses username/password for auth. A real product would... not.
-    return authenticateSession({
-      username: this.state.username,
-      password: this.state.password
-    }).then(() => (
+    // This demo uses username/password or JWT for auth. We're still designing how auth would
+    // work for a real client.
+    const loginArgs = this.state.jwt ?
+      { jwt: this.state.jwt } :
+      { username: this.state.username, password: this.state.password };
+
+    return authenticateSession(loginArgs).then(() => (
       this.props.history.push('/')
     )).catch(() => {
       this.setState({ isLoading: false, isFailed: true });
@@ -68,7 +71,7 @@ class LoginPage extends React.Component {
             <input
               type="text"
               value={ this.state.username }
-              onChange={ (e) => this.setState({ username: e.target.value }) }
+              onChange={ (e) => this.setState({ username: e.target.value, jwt: '' }) }
               placeholder="username"
             />
           </div>
@@ -77,13 +80,25 @@ class LoginPage extends React.Component {
             <input
               type="password"
               value={ this.state.password }
-              onChange={ (e) => this.setState({ password: e.target.value }) }
+              onChange={ (e) => this.setState({ password: e.target.value, jwt: '' }) }
               placeholder="password"
+            />
+          </div>
+          <p>
+            Alternatively, you can use a JWT to login:
+          </p>
+          <div>
+            <textarea
+              rows="3"
+              cols="150"
+              value={ this.state.jwt }
+              onChange={ (e) => this.setState({ jwt: e.target.value, username: '', password: '' }) }
+              placeholder="jwt"
             />
           </div>
           <button
             onClick={ this.performLogin }
-            disabled={ this.state.isLoading || !this.state.username || !this.state.password }
+            disabled={ this.state.isLoading || (!this.state.jwt && (!this.state.username || !this.state.password)) }
           >
             { this.state.isLoading ? 'logging in...' : 'Login' }
           </button>

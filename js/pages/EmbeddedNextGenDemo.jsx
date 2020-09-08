@@ -19,7 +19,7 @@
 
 import React from 'react';
 
-import { PlanningAppDemo } from 'nextcapital-client';
+import { NextGenDemo } from 'nextcapital-client';
 
 import Page from '../components/Page';
 
@@ -30,16 +30,18 @@ import Page from '../components/Page';
  * bugfixes automatically. Breaking changes to the consuming application would be extremely
  * rare.
  *
- * NOTE: This is a incomplete demo app, designed to show the NextGen summary page with a button that
- * launches PIO for retail users. Some functionality may be missing or broken. This is not
- * representative of a final/shipping/real product.
+ * NOTE: This is a incomplete demo app, which should 99% match the deployed NextGen UI experience
+ * for workplace users.
+ *
+ * We currently cannot remove the logo in the header. This would be removed for a production
+ * ready version.
  */
-class EmbeddedPlanningAppDemo extends React.Component {
+class EmbeddedNextGenDemo extends React.Component {
   /**
    * We need to initialize the app when it first renders.
    */
   componentDidMount() {
-    PlanningAppDemo.configure({
+    NextGenDemo.configure({
       onExit: () => window.alert('Flow exited!'),
       onEnrolled: () => window.alert('Enrolled!')
     });
@@ -51,13 +53,13 @@ class EmbeddedPlanningAppDemo extends React.Component {
   render() {
     return (
       <Page
-        title="Planning & Advice (Retail)"
+        title="NextGen UI (Workplace)"
         fullScreen
       >
-        { PlanningAppDemo.render() }
+        { NextGenDemo.render() }
       </Page>
     );
   }
 }
 
-export default EmbeddedPlanningAppDemo;
+export default EmbeddedNextGenDemo;

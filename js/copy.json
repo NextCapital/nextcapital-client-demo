@@ -2,6 +2,12 @@
   "tenant": {
     "name": "External API Demo"
   },
+  "quickPlan": {
+    "loading": {
+      "headline": "<p>Welcome!</p><p>You're taking an important step towards retiring successfully...</p>",
+      "primary": "We're here to help you reach your retirement goals"
+    }
+  },
   "embeddedImplementPlan": {
     "disclosures": "An example of a copy override for implement plan flow disclosures."
   },

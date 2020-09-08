@@ -37,6 +37,7 @@ import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
 import EmbeddedPlanningAppDemo from './pages/EmbeddedPlanningAppDemo';
 import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
 import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
+import EmbeddedNextGenDemo from './pages/EmbeddedNextGenDemo';
 import CopyDebugger from './pages/CopyDebugger';
 import ProfileApiDemo from './pages/ProfileApiDemo';
 import AccountApiDemo from './pages/AccountApiDemo';
@@ -56,12 +57,17 @@ const embeddedAppApiDemos = [
   },
   {
     path: 'quick-plan',
-    name: 'Planning & Advice',
+    name: 'NextGen UI (Workplace)',
+    component: EmbeddedNextGenDemo
+  },
+  {
+    path: 'quick-plan-retail',
+    name: 'Planning & Advice (Retail)',
     component: EmbeddedPlanningAppDemo
   },
   {
     path: 'implement-plan',
-    name: 'Implement Plan',
+    name: 'Implement Plan (Retail)',
     component: EmbeddedImplementDemo
   },
   {
