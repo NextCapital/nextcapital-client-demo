@@ -23,7 +23,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import { hasSession } from 'nextcapital-client';
+import { isClientReady } from '@nextcapital/client';
 
 /**
  * A Route that redirects to the login page if not logged-in.
@@ -33,7 +33,7 @@ const PrivateRoute = ({ children, ...props }) => (
     {...props}
     render={
       () => (
-        hasSession() ?
+        isClientReady() ?
           children :
           <Redirect to='/login' />
       )

@@ -29,6 +29,7 @@ import {
 } from 'react-router-dom';
 
 import {
+  waitForConfiguredClient,
   isClientReady
 } from '@nextcapital/client';
 
@@ -36,6 +37,17 @@ import PrivateRoute from './components/PrivateRoute';
 
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
+
+const defer = () => {
+  const result = {};
+
+  result.promise = new Promise((resolve, reject) => {
+    result.resolve = resolve;
+    result.reject = reject;
+  });
+
+  return result;
+};
 
 // Defines the set of demos in the app. Combines a route, display name, and page component.
 const embeddedAppApiDemos = [
@@ -50,30 +62,22 @@ const miscDemos = [
 const demos = embeddedAppApiDemos.concat(dataApiDemos, miscDemos);
 
 class DemoApplication extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isInitializing: true
-    };
-  }
+  state = {
+    isInitializing: true,
+    authRequest: defer()
+  };
 
   /**
    * When the application mounts, recover the session. If login is needed, the app will route to
    * the login page automatically.
    */
-  componentDidMount() {
-    // console.log('Start NextCapital Client session...');
-    // startSession({
-    //   onCookiesDisabled: () => window.alert('Cookies disabled! Auth will not work.'),
-    //   onNeedsAuth: () => console.log('Authentication needed! Redirecting to login via react-router...')
-    // }).then(() => {
-    //   console.log('NextCapital Client session initialize logic has completed!');
-    //   this.setState({ isInitializing: false });
-    // }).catch((ex) => {
-    //   console.error('NextCapital Client failed to start session....');
-    //   console.error(ex);
-    // });
+  async componentDidMount() {
+    const { Authentication } = await waitForConfiguredClient();
+    this.setState({ isInitializing: false });
+
+    Authentication.authenticate({
+      onNeedsAuthentication: () => this.state.authRequest.promise
+    });
   }
 
   /**
@@ -185,7 +189,7 @@ class DemoApplication extends React.Component {
   render() {
     if (this.state.isInitializing) {
       return (
-        <span>starting session...</span>
+        <span>running the configure call...</span>
       );
     }
 
@@ -205,7 +209,18 @@ class DemoApplication extends React.Component {
                   <Redirect to="/login" />
               }
             />
-            <Route exact path="/login" component={ LoginPage } />
+            <Route
+              exact
+              path="/login"
+              render={
+                (props) => (
+                  <LoginPage
+                    {...props}
+                    authRequest={ this.state.authRequest}
+                  />
+                )
+              }
+            />
             <PrivateRoute path="/demos">
               { this.renderDemos() }
             </PrivateRoute>
