@@ -20,15 +20,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const environments = require('./js/environments');
-
-// Select the environment config for the CORS proxy
-const envConfig = environments[process.env.NC_ENV];
-
-if (!envConfig) {
-  throw new Error('set the NC_ENV environment variable before running!');
-}
-
 module.exports = {
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
@@ -40,30 +31,17 @@ module.exports = {
   module: {
     rules: [
       {
-        parser: {
-          amd: false // needed to use the auto-generated swagger api client
-        }
-      },
-      {
         test: /\.jsx?$/, // runs all custom js through babel
         include: [path.resolve(__dirname, 'js')],
         use: ['babel-loader']
       }
     ]
   },
-  externals: { // These are included as separate <script> tags
-    pdfjs: 'PDFJS'
-  },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-    alias: {
-      'nextcapital-client': path.resolve(__dirname, 'nextcapital-client/nextcapital-client.js'),
-    }
+    extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
-    // Allows using `process.env.NC_ENV` in webpacked code as normal
     new webpack.DefinePlugin({
-      'process.env.NC_ENV': JSON.stringify(process.env.NC_ENV),
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
@@ -75,14 +53,14 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     https: false,
     hot: true,
-    proxy: [{ // Handles the CORS proxy for the selected environment
+    proxy: [{ // Handles the CORS proxy for the SIT environment
       context: '/api',
-      target: envConfig.proxyEndpoint,
+      target: 'https://sit-pa.nextcapital.com',
       changeOrigin: true,
       secure: true
     }, {
       context: '/as',
-      target: envConfig.proxyAuthEndpoint,
+      target: 'https://sit-idp.nextcapital.com',
       changeOrigin: true,
       secure: true
     }]

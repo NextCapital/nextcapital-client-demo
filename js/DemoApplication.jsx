@@ -28,105 +28,23 @@ import {
   Link
 } from 'react-router-dom';
 
+import {
+  isClientReady
+} from '@nextcapital/client';
+
 import PrivateRoute from './components/PrivateRoute';
 
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
-import EmbeddedDocVault from './pages/EmbeddedDocVault';
-import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
-import EmbeddedPlanningAppDemo from './pages/EmbeddedPlanningAppDemo';
-import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
-import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
-import EmbeddedNextGenDemo from './pages/EmbeddedNextGenDemo';
-import NextGenComponentDemo from './pages/NextGenComponentDemo';
-import CopyDebugger from './pages/CopyDebugger';
-import ProfileApiDemo from './pages/ProfileApiDemo';
-import AccountApiDemo from './pages/AccountApiDemo';
-import ForecastApiDemo from './pages/ForecastApiDemo';
-import DocumentApiDemo from './pages/DocumentApiDemo';
-import BasicModelUpdateDemo from './pages/BasicModelUpdateDemo';
-import ImplementPlanApiDemo from './pages/ImplementPlanApiDemo';
-
-import { hasSession, endSession, startSession } from 'nextcapital-client';
 
 // Defines the set of demos in the app. Combines a route, display name, and page component.
 const embeddedAppApiDemos = [
-  {
-    path: 'embedded-charts',
-    name: 'Forecast Charts',
-    component: EmbeddedForecastCharts
-  },
-  {
-    path: 'quick-plan',
-    name: 'NextGen UI (Workplace)',
-    component: EmbeddedNextGenDemo
-  },
-  {
-    path: 'quick-plan-component',
-    name: 'NextGen UI (Web Component)',
-    component: NextGenComponentDemo
-  },
-  {
-    path: 'quick-plan-retail',
-    name: 'Planning & Advice (Retail)',
-    component: EmbeddedPlanningAppDemo
-  },
-  {
-    path: 'implement-plan',
-    name: 'Implement Plan (Retail)',
-    component: EmbeddedImplementDemo
-  },
-  {
-    path: 'doc-vault',
-    name: 'Doc Vault',
-    component: EmbeddedDocVault
-  },
-  {
-    path: 'questionnaire',
-    name: 'Profile Questionnaire',
-    component: EmbeddedQuestionnaire
-  }
 ];
 
 const dataApiDemos = [
-  {
-    path: 'api-profile',
-    name: 'Basic Profile API',
-    component: ProfileApiDemo
-  },
-  {
-    path: 'api-accounts',
-    name: 'Accounts/Incomes API',
-    component: AccountApiDemo
-  },
-  {
-    path: 'api-forecasts',
-    name: 'Forecast API',
-    component: ForecastApiDemo
-  },
-  {
-    path: 'api-implement-plan',
-    name: 'Implement Plan API',
-    component: ImplementPlanApiDemo
-  },
-  {
-    path: 'api-doc-vault',
-    name: 'Documents API',
-    component: DocumentApiDemo
-  },
-  {
-    path: 'api-model-updates',
-    name: 'Basic Model Updates',
-    component: BasicModelUpdateDemo
-  }
 ];
 
 const miscDemos = [
-  {
-    path: 'copy-debugger',
-    name: 'Copy Debugger',
-    component: CopyDebugger
-  }
 ];
 
 const demos = embeddedAppApiDemos.concat(dataApiDemos, miscDemos);
@@ -145,24 +63,24 @@ class DemoApplication extends React.Component {
    * the login page automatically.
    */
   componentDidMount() {
-    console.log('Start NextCapital Client session...');
-    startSession({
-      onCookiesDisabled: () => window.alert('Cookies disabled! Auth will not work.'),
-      onNeedsAuth: () => console.log('Authentication needed! Redirecting to login via react-router...')
-    }).then(() => {
-      console.log('NextCapital Client session initialize logic has completed!');
-      this.setState({ isInitializing: false });
-    }).catch((ex) => {
-      console.error('NextCapital Client failed to start session....');
-      console.error(ex);
-    });
+    // console.log('Start NextCapital Client session...');
+    // startSession({
+    //   onCookiesDisabled: () => window.alert('Cookies disabled! Auth will not work.'),
+    //   onNeedsAuth: () => console.log('Authentication needed! Redirecting to login via react-router...')
+    // }).then(() => {
+    //   console.log('NextCapital Client session initialize logic has completed!');
+    //   this.setState({ isInitializing: false });
+    // }).catch((ex) => {
+    //   console.error('NextCapital Client failed to start session....');
+    //   console.error(ex);
+    // });
   }
 
   /**
    * Ends the current session, reloading the page when complete to clear any cached models.
    */
   logout = () => {
-    endSession().finally(() => window.location.reload());
+    window.location.reload();
   };
 
   renderSidebarTop() {
@@ -282,7 +200,7 @@ class DemoApplication extends React.Component {
               exact
               path='/'
               render={
-                () => hasSession() ?
+                () => isClientReady() ?
                   <Redirect to="/demos" /> :
                   <Redirect to="/login" />
               }
