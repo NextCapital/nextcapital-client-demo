@@ -134,7 +134,7 @@ class DemoApplication extends React.Component {
    * NOTE: In a real-life scenario, there will never be a login page. So, overall, the
    * authentication in this demo is more complex than it should be in real-life scenarios.
    *
-   * See provided documented on how best to use the `authenticate` call.
+   * See provided documentation on how best to use the `authenticate` call.
    */
   async componentDidMount() {
     const { Authentication } = await waitForConfiguredClient();
