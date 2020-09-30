@@ -60,6 +60,9 @@ class LoginPage extends React.Component {
       this.props.authRequest.resolve();
       await this.props.authRequest.promise;
 
+      // set the token on session so it will persist after refresh
+      sessionStorage.setItem('nc-local-token', Authentication.getLocalToken());
+
       // redirect to the demo homepage
       this.props.history.push('/');
     } catch (error) {

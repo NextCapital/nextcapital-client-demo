@@ -119,17 +119,24 @@ class DemoApplication extends React.Component {
    */
   async componentDidMount() {
     const { Authentication } = await waitForConfiguredClient();
-    this.setState({ isInitializing: false });
 
-    Authentication.authenticate({
-      onNeedsAuthentication: () => this.state.authRequest.promise
+    await Authentication.authenticate({
+      onNeedsAuthentication: () => {
+        this.setState({ isInitializing: false });
+        return this.state.authRequest.promise;
+      },
+      token: sessionStorage.getItem('nc-local-token') // keep auth after refresh
     });
+
+    // refresh the view
+    this.setState({ isInitializing: false });
   }
 
   /**
    * Ends the current session, reloading the page when complete to clear any cached models.
    */
   logout = () => {
+    sessionStorage.removeItem('nc-local-token');
     window.location.reload();
   };
 
