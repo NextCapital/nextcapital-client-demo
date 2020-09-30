@@ -25,7 +25,10 @@ import {
   Switch,
   Redirect,
   Route,
-  Link
+  Link,
+  withRouter,
+  useHistory,
+  useLocation
 } from 'react-router-dom';
 
 import {
@@ -37,6 +40,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
+import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 
 const defer = () => {
   const result = {};
@@ -49,17 +53,59 @@ const defer = () => {
   return result;
 };
 
-// Defines the set of demos in the app. Combines a route, display name, and page component.
-const embeddedAppApiDemos = [
+const demos = [
+  {
+    name: 'Demo Home',
+    route: '/demos/',
+    component: DemoHome
+  },
+  {
+    name: 'Embedded Planning',
+    route: '/demos/embedded-planning',
+    component: EmbeddedPlanning
+  }
 ];
 
-const dataApiDemos = [
-];
+const HeaderLeft = () => {
+  const location = useLocation();
+  const history = useHistory();
 
-const miscDemos = [
-];
+  return (
+    <div className="header-left">
+      <h2 className="title">NextCapital Client Demo</h2>
+      <label for="demo-select">choose demo: </label>
+      <select
+        value={ location.pathname }
+        onChange={ (event) => history.push(event.target.value) }
+        id="demo-select"
+      >
+        {
+          _.map(demos, (demo, key) => (
+            <option
+              key={ key}
+              value={ demo.route }
+            >
+              { demo.name }
+            </option>
+          ))
+        }
+      </select>
+    </div>
+  );
+};
 
-const demos = embeddedAppApiDemos.concat(dataApiDemos, miscDemos);
+const HeaderTitle = () => {
+  const location = useLocation();
+
+  const match = _.find(demos, { route: location.pathname });
+  const label = match ? match.name : 'NextCapital Client Demo';
+
+  return (
+    <div className="header-title">
+      <h1>{ label }</h1>
+    </div>
+  );
+};
 
 class DemoApplication extends React.Component {
   state = {
@@ -87,10 +133,9 @@ class DemoApplication extends React.Component {
     window.location.reload();
   };
 
-  renderSidebarTop() {
+  renderHeaderRight() {
     return (
-      <div className="sidebar-header">
-        <h2 className="title">NextCapital Demo App</h2>
+      <div className="header-right">
         <button
           className="logout"
           onClick={ this.logout }
@@ -104,49 +149,12 @@ class DemoApplication extends React.Component {
   /**
    * Renders a Link to each demo.
    */
-  renderSidebar() {
+  renderHeader() {
     return (
-      <div className="demo-sidebar">
-        { this.renderSidebarTop() }
-        <div className="sidebar-links">
-          <h3>Embedded App API Demos</h3>
-          {
-            _.map(embeddedAppApiDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
-        <div className="sidebar-links">
-          <h3>Data API Demos</h3>
-          {
-            _.map(dataApiDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
-        <div className="sidebar-links">
-          <h3>Misc Demos</h3>
-          {
-            _.map(miscDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
+      <div className="demo-header">
+        <HeaderLeft />
+        <HeaderTitle />
+        { this.renderHeaderRight() }
       </div>
     );
   }
@@ -158,13 +166,12 @@ class DemoApplication extends React.Component {
     return (
       <div className="current-demo">
         <Switch>
-          <Route exact path="/demos/" component={ DemoHome } />
           {
             _.map(demos, (demo) => (
               <Route
                 exact
                 key={ demo.path }
-                path={ `/demos/${demo.path}` }
+                path={ demo.route }
                 component={ demo.component }
               />
             ))
@@ -180,7 +187,7 @@ class DemoApplication extends React.Component {
   renderDemos() {
     return (
       <div className="demo-container">
-        { this.renderSidebar() }
+        { this.renderHeader() }
         { this.renderCurrentDemo() }
       </div>
     );

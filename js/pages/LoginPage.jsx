@@ -73,8 +73,9 @@ class LoginPage extends React.Component {
     }
 
     return (
-      <Page title="Login">
+      <Page>
         <SimpleSpacer>
+          <h1>NextCapital Client Demo Login</h1>
           <div>
             <span>username: </span>
             <input
