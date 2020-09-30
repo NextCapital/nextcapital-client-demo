@@ -41,6 +41,17 @@ class LoginPage extends React.Component {
     jwt: ''
   };
 
+  /**
+   * Logs in against the `Authenticate` module, either using credentials or JWT. When this is done,
+   * it will:
+   *
+   * - resolve the `onNeedsAuthentication` deferred promise
+   * - store the token in session storage, so auth will persist after refresh
+   * - redirect to the main demo page
+   *
+   * Again, in real-life scenarios, the `authenticate` call should not make use of user input for
+   * the username/password/jwt.
+   */
   performLogin = async () => {
     const { Authentication } = getClient();
     this.setState({ isLoading: true })

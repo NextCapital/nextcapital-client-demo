@@ -25,8 +25,6 @@ import {
   Switch,
   Redirect,
   Route,
-  Link,
-  withRouter,
   useHistory,
   useLocation
 } from 'react-router-dom';
@@ -42,6 +40,11 @@ import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 
+/**
+ * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
+ *
+ * This is a simple implementation of a deferred promise for this purpose.
+ */
 const defer = () => {
   const result = {};
 
@@ -53,6 +56,7 @@ const defer = () => {
   return result;
 };
 
+// The set of demos to populate the dropdown with.
 const demos = [
   {
     name: 'Demo Home',
@@ -66,6 +70,11 @@ const demos = [
   }
 ];
 
+/**
+ * The left side of the header. Renders the dropdown demo selector.
+ *
+ * This needs to be extracted to a component to so it can use react-router hooks.
+ */
 const HeaderLeft = () => {
   const location = useLocation();
   const history = useHistory();
@@ -94,6 +103,11 @@ const HeaderLeft = () => {
   );
 };
 
+/**
+ * Renders the name of the current demo.
+ *
+ * This needs to be extracted to a component to so it can use react-router hooks.
+ */
 const HeaderTitle = () => {
   const location = useLocation();
 
@@ -114,16 +128,22 @@ class DemoApplication extends React.Component {
   };
 
   /**
-   * When the application mounts, recover the session. If login is needed, the app will route to
-   * the login page automatically.
+   * When the application mounts, authenticates the session. Re-uses the token from session storage
+   * if set, and redirects to the login page otherwise.
+   *
+   * NOTE: In a real-life scenario, there will never be a login page. So, overall, the
+   * authentication in this demo is more complex than it should be in real-life scenarios.
+   *
+   * See provided documented on how best to use the `authenticate` call.
    */
   async componentDidMount() {
     const { Authentication } = await waitForConfiguredClient();
 
     await Authentication.authenticate({
       onNeedsAuthentication: () => {
-        this.setState({ isInitializing: false });
-        return this.state.authRequest.promise;
+        const authRequest = defer();
+        this.setState({ isInitializing: false, authRequest });
+        return authRequest.promise;
       },
       token: sessionStorage.getItem('nc-local-token') // keep auth after refresh
     });
@@ -133,13 +153,16 @@ class DemoApplication extends React.Component {
   }
 
   /**
-   * Ends the current session, reloading the page when complete to clear any cached models.
+   * Ends the current session, which in this case means just ditching the token and refreshing.
    */
   logout = () => {
     sessionStorage.removeItem('nc-local-token');
     window.location.reload();
   };
 
+  /**
+   * Renders the logout button.
+   */
   renderHeaderRight() {
     return (
       <div className="header-right">
@@ -154,7 +177,7 @@ class DemoApplication extends React.Component {
   }
 
   /**
-   * Renders a Link to each demo.
+   * Renders the top header bar.
    */
   renderHeader() {
     return (

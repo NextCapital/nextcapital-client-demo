@@ -18,15 +18,12 @@
  */
 
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',
-    path: path.resolve(__dirname, 'dist'),
-    library: 'external-api-demo',
-    libraryTarget: 'umd'
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -40,11 +37,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
-  ],
   devtool: 'source-map',
   mode: 'development',
   target: 'web',

@@ -32,7 +32,7 @@ import DemoApplication from './DemoApplication';
 // Expose on the window for use with the javascript console
 window._ = _;
 
-// The NextCapital client should be immediately configured, before any other code runs
+// The NextCapital Client should be immediately configured, before any other code runs
 configure({
   environment: {
     environmentClass: ENVIRONMENT_CLASS.DEVELOPMENT, // NC Devs: Change to `DEVELOPMENT`
