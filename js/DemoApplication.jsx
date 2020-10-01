@@ -25,150 +25,147 @@ import {
   Switch,
   Redirect,
   Route,
-  Link
+  useHistory,
+  useLocation
 } from 'react-router-dom';
+
+import {
+  waitForConfiguredClient,
+  isClientReady
+} from '@nextcapital/client';
 
 import PrivateRoute from './components/PrivateRoute';
 
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
-import EmbeddedDocVault from './pages/EmbeddedDocVault';
-import EmbeddedImplementDemo from './pages/EmbeddedImplementDemo';
-import EmbeddedPlanningAppDemo from './pages/EmbeddedPlanningAppDemo';
-import EmbeddedQuestionnaire from './pages/EmbeddedQuestionnaire';
-import EmbeddedForecastCharts from './pages/EmbeddedForecastCharts';
-import EmbeddedNextGenDemo from './pages/EmbeddedNextGenDemo';
-import NextGenComponentDemo from './pages/NextGenComponentDemo';
-import CopyDebugger from './pages/CopyDebugger';
-import ProfileApiDemo from './pages/ProfileApiDemo';
-import AccountApiDemo from './pages/AccountApiDemo';
-import ForecastApiDemo from './pages/ForecastApiDemo';
-import DocumentApiDemo from './pages/DocumentApiDemo';
-import BasicModelUpdateDemo from './pages/BasicModelUpdateDemo';
-import ImplementPlanApiDemo from './pages/ImplementPlanApiDemo';
+import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 
-import { hasSession, endSession, startSession } from 'nextcapital-client';
+/**
+ * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
+ *
+ * This is a simple implementation of a deferred promise for this purpose.
+ */
+const defer = () => {
+  const result = {};
 
-// Defines the set of demos in the app. Combines a route, display name, and page component.
-const embeddedAppApiDemos = [
+  result.promise = new Promise((resolve, reject) => {
+    result.resolve = resolve;
+    result.reject = reject;
+  });
+
+  return result;
+};
+
+// The set of demos to populate the dropdown with.
+const demos = [
   {
-    path: 'embedded-charts',
-    name: 'Forecast Charts',
-    component: EmbeddedForecastCharts
+    name: 'Demo Home',
+    route: '/demos/',
+    component: DemoHome
   },
   {
-    path: 'quick-plan',
-    name: 'NextGen UI (Workplace)',
-    component: EmbeddedNextGenDemo
-  },
-  {
-    path: 'quick-plan-component',
-    name: 'NextGen UI (Web Component)',
-    component: NextGenComponentDemo
-  },
-  {
-    path: 'quick-plan-retail',
-    name: 'Planning & Advice (Retail)',
-    component: EmbeddedPlanningAppDemo
-  },
-  {
-    path: 'implement-plan',
-    name: 'Implement Plan (Retail)',
-    component: EmbeddedImplementDemo
-  },
-  {
-    path: 'doc-vault',
-    name: 'Doc Vault',
-    component: EmbeddedDocVault
-  },
-  {
-    path: 'questionnaire',
-    name: 'Profile Questionnaire',
-    component: EmbeddedQuestionnaire
+    name: 'Embedded Planning',
+    route: '/demos/embedded-planning',
+    component: EmbeddedPlanning
   }
 ];
 
-const dataApiDemos = [
-  {
-    path: 'api-profile',
-    name: 'Basic Profile API',
-    component: ProfileApiDemo
-  },
-  {
-    path: 'api-accounts',
-    name: 'Accounts/Incomes API',
-    component: AccountApiDemo
-  },
-  {
-    path: 'api-forecasts',
-    name: 'Forecast API',
-    component: ForecastApiDemo
-  },
-  {
-    path: 'api-implement-plan',
-    name: 'Implement Plan API',
-    component: ImplementPlanApiDemo
-  },
-  {
-    path: 'api-doc-vault',
-    name: 'Documents API',
-    component: DocumentApiDemo
-  },
-  {
-    path: 'api-model-updates',
-    name: 'Basic Model Updates',
-    component: BasicModelUpdateDemo
-  }
-];
+/**
+ * The left side of the header. Renders the dropdown demo selector.
+ *
+ * This needs to be extracted to a component to so it can use react-router hooks.
+ */
+const HeaderLeft = () => {
+  const location = useLocation();
+  const history = useHistory();
 
-const miscDemos = [
-  {
-    path: 'copy-debugger',
-    name: 'Copy Debugger',
-    component: CopyDebugger
-  }
-];
+  return (
+    <div className="header-left">
+      <h2 className="title">NextCapital Client Demo</h2>
+      <label for="demo-select">choose demo: </label>
+      <select
+        value={ location.pathname }
+        onChange={ (event) => history.push(event.target.value) }
+        id="demo-select"
+      >
+        {
+          _.map(demos, (demo, key) => (
+            <option
+              key={ key}
+              value={ demo.route }
+            >
+              { demo.name }
+            </option>
+          ))
+        }
+      </select>
+    </div>
+  );
+};
 
-const demos = embeddedAppApiDemos.concat(dataApiDemos, miscDemos);
+/**
+ * Renders the name of the current demo.
+ *
+ * This needs to be extracted to a component to so it can use react-router hooks.
+ */
+const HeaderTitle = () => {
+  const location = useLocation();
+
+  const match = _.find(demos, { route: location.pathname });
+  const label = match ? match.name : 'NextCapital Client Demo';
+
+  return (
+    <div className="header-title">
+      <h1>{ label }</h1>
+    </div>
+  );
+};
 
 class DemoApplication extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isInitializing: true
-    };
-  }
-
-  /**
-   * When the application mounts, recover the session. If login is needed, the app will route to
-   * the login page automatically.
-   */
-  componentDidMount() {
-    console.log('Start NextCapital Client session...');
-    startSession({
-      onCookiesDisabled: () => window.alert('Cookies disabled! Auth will not work.'),
-      onNeedsAuth: () => console.log('Authentication needed! Redirecting to login via react-router...')
-    }).then(() => {
-      console.log('NextCapital Client session initialize logic has completed!');
-      this.setState({ isInitializing: false });
-    }).catch((ex) => {
-      console.error('NextCapital Client failed to start session....');
-      console.error(ex);
-    });
-  }
-
-  /**
-   * Ends the current session, reloading the page when complete to clear any cached models.
-   */
-  logout = () => {
-    endSession().finally(() => window.location.reload());
+  state = {
+    isInitializing: true,
+    authRequest: defer()
   };
 
-  renderSidebarTop() {
+  /**
+   * When the application mounts, authenticates the session. Re-uses the token from session storage
+   * if set, and redirects to the login page otherwise.
+   *
+   * NOTE: In a real-life scenario, there will never be a login page. So, overall, the
+   * authentication in this demo is more complex than it should be in real-life scenarios.
+   *
+   * See provided documentation on how best to use the `authenticate` call.
+   */
+  async componentDidMount() {
+    const { Authentication } = await waitForConfiguredClient();
+
+    await Authentication.authenticate({
+      onNeedsAuthentication: () => {
+        const authRequest = defer();
+        this.setState({ isInitializing: false, authRequest });
+        return authRequest.promise;
+      },
+      token: sessionStorage.getItem('nc-local-token') // keep auth after refresh
+    });
+
+    // refresh the view
+    this.setState({ isInitializing: false });
+  }
+
+  /**
+   * Ends the current session, which in this case means just ditching the token and refreshing.
+   */
+  logout = () => {
+    sessionStorage.removeItem('nc-local-token');
+    window.location.reload();
+  };
+
+  /**
+   * Renders the logout button.
+   */
+  renderHeaderRight() {
     return (
-      <div className="sidebar-header">
-        <h2 className="title">NextCapital Demo App</h2>
+      <div className="header-right">
         <button
           className="logout"
           onClick={ this.logout }
@@ -180,51 +177,14 @@ class DemoApplication extends React.Component {
   }
 
   /**
-   * Renders a Link to each demo.
+   * Renders the top header bar.
    */
-  renderSidebar() {
+  renderHeader() {
     return (
-      <div className="demo-sidebar">
-        { this.renderSidebarTop() }
-        <div className="sidebar-links">
-          <h3>Embedded App API Demos</h3>
-          {
-            _.map(embeddedAppApiDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
-        <div className="sidebar-links">
-          <h3>Data API Demos</h3>
-          {
-            _.map(dataApiDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
-        <div className="sidebar-links">
-          <h3>Misc Demos</h3>
-          {
-            _.map(miscDemos, (demo) => (
-              <Link
-                key={ demo.path }
-                to={ `/demos/${demo.path}` }
-              >
-                { demo.name }
-              </Link>
-            ))
-          }
-        </div>
+      <div className="demo-header">
+        <HeaderLeft />
+        <HeaderTitle />
+        { this.renderHeaderRight() }
       </div>
     );
   }
@@ -236,13 +196,12 @@ class DemoApplication extends React.Component {
     return (
       <div className="current-demo">
         <Switch>
-          <Route exact path="/demos/" component={ DemoHome } />
           {
             _.map(demos, (demo) => (
               <Route
                 exact
                 key={ demo.path }
-                path={ `/demos/${demo.path}` }
+                path={ demo.route }
                 component={ demo.component }
               />
             ))
@@ -258,7 +217,7 @@ class DemoApplication extends React.Component {
   renderDemos() {
     return (
       <div className="demo-container">
-        { this.renderSidebar() }
+        { this.renderHeader() }
         { this.renderCurrentDemo() }
       </div>
     );
@@ -267,7 +226,7 @@ class DemoApplication extends React.Component {
   render() {
     if (this.state.isInitializing) {
       return (
-        <span>starting session...</span>
+        <span>running the configure call...</span>
       );
     }
 
@@ -282,12 +241,23 @@ class DemoApplication extends React.Component {
               exact
               path='/'
               render={
-                () => hasSession() ?
+                () => isClientReady() ?
                   <Redirect to="/demos" /> :
                   <Redirect to="/login" />
               }
             />
-            <Route exact path="/login" component={ LoginPage } />
+            <Route
+              exact
+              path="/login"
+              render={
+                (props) => (
+                  <LoginPage
+                    {...props}
+                    authRequest={ this.state.authRequest}
+                  />
+                )
+              }
+            />
             <PrivateRoute path="/demos">
               { this.renderDemos() }
             </PrivateRoute>

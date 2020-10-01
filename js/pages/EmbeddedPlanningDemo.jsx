@@ -19,20 +19,27 @@
 
 import React from 'react';
 
-import { DocVaultDemo } from 'nextcapital-client';
+import { NextCapitalComponent } from '@nextcapital/client';
 
 import Page from '../components/Page';
 
 /**
- * Renders a fully-interactive doc vault embedded application with a single line of code!
+ * This demo renders the planning UI using `NextCapitalComponent`.
+ *
+ * It really is this easy!
  */
-const EmbeddedDocVault = () => (
-  <Page
-    title="Embedded Doc Vault"
-    fullScreen
-  >
-    { DocVaultDemo.render() }
+const EmbeddedPlanningDemo = () => (
+  <Page fullScreen>
+    <NextCapitalComponent
+      getEmbed={
+        (client) => new client.EmbeddedPlanning({
+          onExit: () => window.alert('exit callback called'),
+          onEnrollment: () => window.alert('enrollment callback called')
+        })
+      }
+      loadingContent={ 'loading...' }
+    />
   </Page>
 );
 
-export default EmbeddedDocVault;
+export default EmbeddedPlanningDemo;

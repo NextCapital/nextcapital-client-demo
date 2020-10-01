@@ -10,11 +10,10 @@
     "build:styles": "node-sass ./styles/demo.scss ./dist/demo.css",
     "clean": "rm -rf dist",
     "copy": "cp -a ./static/ ./dist",
-    "start": "npm run clean && npm run copy && npm run build:styles && webpack-dev-server --config=./webpack.config.js --watch",
-    "start:sit": "NC_ENV=sit npm run start",
-    "start:uat": "NC_ENV=uat npm run start"
+    "start": "npm run clean && npm run copy && npm run build:styles && webpack-dev-server --config=./webpack.config.js --watch"
   },
   "dependencies": {
+    "@nextcapital/client": "^0.1.0",
     "classnames": "^2.2.6",
     "highcharts": "^6.0.7",
     "lodash": "^4.17.19",
