@@ -40,6 +40,7 @@ import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
+import RICDemo from './pages/RICDemo';
 
 /**
  * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
@@ -73,6 +74,11 @@ const demos = [
     name: 'Copy Helper',
     route: '/demos/copy-helper',
     component: CopyHelperDemo
+  },
+  {
+    name: 'RIC API',
+    route: '/demos/ric',
+    component: RICDemo
   }
 ];
 
