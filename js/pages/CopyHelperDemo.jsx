@@ -30,27 +30,18 @@ import SimpleSpacer from '../components/SimpleSpacer';
  * in the UI.
  *
  * For example, after enabling, you may see `example.deep.title` in the UI. You can then add
- * an override in `copy.json` for that copy key:
- *
- * {
- *   "example": {
- *     "deep": {
- *        "title": "This is copy for ${tenant.name}!"
- *     }
- *   }
- * }
- *
- * This will then render `This is copy for External API Demo!` in the UI.
- *
- * Copy supports substitutions, formatting, conditional copy, etc... all you would need to do
- * get custom copy in any embedded UI is:
+ * an override for that copy key using this tool. In general the process goes:
  *
  * 1) Use the debugger to find the key
- * 2) Update the copy at that key in `copy.json`
+ * 2) Update the copy for that key using the tool
  * 3) Check if the results in the UI are as expected. If not, NextCapital may need to make some
  *    updates to allow that copy to be more easily or specifically configured.
  *
  * We hope to expend these debug tools and generally make customizing copy easier in the future.
+ *
+ * NOTE: We recommend using this only as a helper tool for building copy configs. NextCapital
+ * should be managing all actual copy in the application. Any copy registered via this tool can
+ * break without notice. See provided documentation.
  */
 class CopyHelperDemo extends React.Component {
   state = {
@@ -116,7 +107,7 @@ class CopyHelperDemo extends React.Component {
       <Page>
         <SimpleSpacer>
           <h2>Toggle Copy Keys</h2>
-          <div>All copy can be customized via the <i>copy.json</i> file. To make customizing copy easier, we a tool that allows displaying the copy keys in the embedded applications. Once toggled, return to any of the embedded demos.</div>
+          <div>To make configuring copy easier, we provide a tool that allows displaying the copy keys in the embedded applications. Once toggled, return to any of the embedded demos.</div>
           <div>
             <span>This tool is currently: </span>
             <span>{ this.copyHelper.isCopyDebugging() ? 'Enabled' : 'Disabled' }</span>
