@@ -39,6 +39,7 @@ import PrivateRoute from './components/PrivateRoute';
 import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
+import CopyHelperDemo from './pages/CopyHelperDemo';
 
 /**
  * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
@@ -67,6 +68,11 @@ const demos = [
     name: 'Embedded Planning',
     route: '/demos/embedded-planning',
     component: EmbeddedPlanning
+  },
+  {
+    name: 'Copy Helper',
+    route: '/demos/copy-helper',
+    component: CopyHelperDemo
   }
 ];
 
