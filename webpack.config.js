@@ -18,8 +18,9 @@
  */
 
 const path = require('path');
+const webpack = require('webpack');
 
-module.exports = {
+module.exports = (env, { solution = 'nextcapital' }) => ({
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',
@@ -37,6 +38,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
+  plugins: [
+    new webpack.DefinePlugin({ // allow us to use the solution ID in code
+      SOLUTION_ID: JSON.stringify(solution)
+    })
+  ],
   devtool: 'source-map',
   mode: 'development',
   target: 'web',
@@ -57,4 +63,4 @@ module.exports = {
       secure: true
     }]
   },
-};
+});

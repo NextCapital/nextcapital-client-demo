@@ -41,7 +41,7 @@ configure({
     endpoint: '/api',
     authEndpoint: '/as/token.oauth2'
   },
-  solutionId: 'nextcapital'
+  solutionId: SOLUTION_ID // set from webpack
 });
 
 // Wait for the page to be ready, then render the application...
