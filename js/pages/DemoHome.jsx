@@ -23,7 +23,7 @@ import Page from '../components/Page';
 
 const DemoHome = () => (
   <Page>
-    <p>Select a demo in the header dropdown.</p>
+    <div>Select a demo in the header dropdown.</div>
   </Page>
 );
 
