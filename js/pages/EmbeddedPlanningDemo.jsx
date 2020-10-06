@@ -33,8 +33,12 @@ const EmbeddedPlanningDemo = () => (
     <NextCapitalComponent
       getEmbed={
         (client) => new client.EmbeddedPlanning({
-          onExit: () => window.alert('exit callback called'),
-          onEnrollment: () => window.alert('enrollment callback called')
+          onExit: () => console.log('Planning Demo: exit callback called'),
+          onEnrolled: () => console.log('Planning Demo: enrollment callback called'),
+          onEnrollmentStart: () => console.log('Planning Demo: enrollment start callback called'),
+          onUnenrolled: () => console.log('Planning Demo: unenrollment callback called'),
+          onUnenrollmentStart: () => console.log('Planning Demo: unenrollment start callback called'),
+          onError: () => console.log('Planning Demo: an error has occurred')
         })
       }
       loadingContent={ 'loading...' }
