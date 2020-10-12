@@ -1,7 +1,7 @@
 {
-  "name": "external-api-demo",
+  "name": "nextcapital-client-demo",
   "version": "1.0.0",
-  "description": "Demo of external NextCapital API and embeddable UI",
+  "description": "Demo of the NextCapital Client",
   "author": "NextCapital Group",
   "license": "UNLICENSED",
   "main": "index.js",

@@ -1,4 +1,4 @@
-# External API Demo
+# Nextcapital Client Demo
 
 A simple application that demonstrates how to integrate with the NextCapital client.
 
