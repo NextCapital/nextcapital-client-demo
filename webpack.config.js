@@ -17,10 +17,11 @@
  * or derived under license from NextCapital Group's software.
  */
 
+const _ = require('lodash');
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = (env, { solution = 'nextcapital' }) => ({
+module.exports = (env = 'sit', { solution = 'nextcapital' }) => ({
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',
@@ -40,7 +41,8 @@ module.exports = (env, { solution = 'nextcapital' }) => ({
   },
   plugins: [
     new webpack.DefinePlugin({ // allow us to use the solution ID in code
-      SOLUTION_ID: JSON.stringify(solution)
+      SOLUTION_ID: JSON.stringify(solution),
+      NC_ENV: JSON.stringify(_.toUpper(env))
     })
   ],
   devtool: 'source-map',

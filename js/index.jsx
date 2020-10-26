@@ -35,7 +35,7 @@ window._ = _;
 // The NextCapital Client should be immediately configured, before any other code runs
 configure({
   environment: {
-    environmentClass: ENVIRONMENT_CLASS.DEVELOPMENT, // NC Devs: Change to `DEVELOPMENT`
+    environmentClass: ENVIRONMENT_CLASS[NC_ENV],
     accessType: ENVIRONMENT_ACCESS_TYPE.PROXY,
     trackingEnabled: true,
     endpoint: '/api',
