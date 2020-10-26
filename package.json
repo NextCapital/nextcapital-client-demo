@@ -10,7 +10,8 @@
     "build:styles": "node-sass ./styles/demo.scss ./dist/demo.css",
     "clean": "rm -rf dist",
     "copy": "cp -a ./static/ ./dist",
-    "start": "npm run clean && npm run copy && npm run build:styles && webpack-dev-server --config=./webpack.config.js --watch"
+    "start": "npm run clean && npm run copy && npm run build:styles && webpack-dev-server --config=./webpack.config.js --watch",
+    "start:dev": "npm run start -- --env=development"
   },
   "dependencies": {
     "@nextcapital/client": "^0.1.0",
