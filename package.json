@@ -14,7 +14,7 @@
     "start:dev": "npm run start -- --env=development"
   },
   "dependencies": {
-    "@nextcapital/client": "^0.1.0",
+    "@nextcapital/client": "^1.0.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.19",
     "react": "^16.12.0",
