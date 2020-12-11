@@ -40,6 +40,7 @@ import LoginPage from './pages/LoginPage';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
+import ColorService from './pages/ColorService';
 import RICDemo from './pages/RICDemo';
 
 /**
@@ -76,6 +77,11 @@ const demos = [
     component: CopyHelperDemo
   },
   {
+    name: 'Color Service',
+    route: '/demos/color-service',
+    component: ColorService
+  },
+  {
     name: 'RIC API',
     route: '/demos/ric',
     component: RICDemo
@@ -94,7 +100,7 @@ const HeaderLeft = () => {
   return (
     <div className="header-left">
       <h2 className="title">NextCapital Client Demo</h2>
-      <label for="demo-select">choose demo: </label>
+      <label htmlFor="demo-select">choose demo: </label>
       <select
         value={ location.pathname }
         onChange={ (event) => history.push(event.target.value) }
@@ -212,7 +218,7 @@ class DemoApplication extends React.Component {
             _.map(demos, (demo) => (
               <Route
                 exact
-                key={ demo.path }
+                key={ demo.route }
                 path={ demo.route }
                 component={ demo.component }
               />
