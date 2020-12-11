@@ -21,6 +21,8 @@ const _ = require('lodash');
 const path = require('path');
 const webpack = require('webpack');
 
+const getAbsolutePath = (relativePath) => path.resolve(__dirname, relativePath);
+
 module.exports = (env = 'sit', { solution = 'nextcapital' }) => ({
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
@@ -37,7 +39,14 @@ module.exports = (env = 'sit', { solution = 'nextcapital' }) => ({
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      // Needed so that peerDependency packages use the package from the root when linked
+      // https://medium.com/@penx/managing-dependencies-in-a-node-package-so-that-they-are-compatible-with-npm-link-61befa5aaca7
+      react: getAbsolutePath('./node_modules/react'),
+      'react-dom': getAbsolutePath('./node_modules/react-dom'),
+      lodash: getAbsolutePath('./node_modules/lodash')
+    }
   },
   plugins: [
     new webpack.DefinePlugin({ // allow us to use the solution ID in code
