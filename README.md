@@ -2,6 +2,14 @@
 
 A simple application that demonstrates how to integrate with the NextCapital client.
 
+👉 NOTE: This repo is public! 👈
+
+## Full Documentation
+
+Full documentation for the `@nextcapital/client` package can be found at the wiki:
+
+https://github.com/nextcapital/nextcapital-client-demo/wiki
+
 ## Getting Started
 
 Please read the Quick Start Guide for the NextCapital Client before getting started.
@@ -50,20 +58,4 @@ We've also added helpful in-code documentation throughout this codebase.
 
 ## NOTICE
 
-Copyright Notice
 Copyright (c) 2020 NextCapital Group. All Rights Reserved.
-
-THIS IS UNPUBLISHED CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF NEXTCAPITAL GROUP.
-
-The copyright notice above does not evidence any actual or intended publication
-of such source code.
-
-Copyright (c) 2020
-NextCapital Group
-All Rights Reserved.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-CONFIDENTIAL AND PROPRIETARY NOTICE
-This source code is unpublished confidential and proprietary information constituting,
-or derived under license from NextCapital Group's software.
