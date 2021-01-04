@@ -55,7 +55,7 @@ class CopyHelperDemo extends React.Component {
     this.setState({
       keyToEdit: '',
       newCopyForKey: '',
-      registeredCopy: this.formatRegisteredCopy(),
+      registeredCopy: this.formatRegisteredCopy()
     });
 
     this.updateRegisteredCopy();
@@ -83,6 +83,7 @@ class CopyHelperDemo extends React.Component {
     );
   }
 
+  /* eslint-disable max-len */
   render() {
     return (
       <Page>
@@ -137,6 +138,7 @@ class CopyHelperDemo extends React.Component {
       </Page>
     );
   }
+  /* eslint-enable max-len */
 }
 
 export default CopyHelperDemo;

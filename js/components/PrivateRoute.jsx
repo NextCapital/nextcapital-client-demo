@@ -8,6 +8,9 @@ import { isClientReady } from '@nextcapital/client';
 
 /**
  * A Route that redirects to the login page if not logged-in.
+ *
+ * @param root0
+ * @param root0.children
  */
 const PrivateRoute = ({ children, ...props }) => (
   <Route

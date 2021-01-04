@@ -8,6 +8,8 @@ import { getClient } from '@nextcapital/client';
  * available for the given solution.
  *
  * This prevents errors by only calling `getChildren` if the demo module exists.
+ *
+ * @param props
  */
 const SolutionSpecificDemo = (props) => {
   const client = getClient();
@@ -18,7 +20,7 @@ const SolutionSpecificDemo = (props) => {
 
   return (
     <div>
-      Sorry, this demo isn't available for the current solution.
+      Sorry, this demo isn&apos;t available for the current solution.
     </div>
   );
 };

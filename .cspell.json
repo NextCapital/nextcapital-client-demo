@@ -1,0 +1,19 @@
+{
+  "allowCompoundWords": true,
+  "ignoreWords": [
+    "RIC",
+    "UX",
+
+    "argify",
+    "bgcolor",
+    "favicons",
+    "plannable",
+    "isn",
+    "npx",
+    "uat",
+    "unenrollment",
+    "unmount",
+    "usr"
+  ],
+  "minWordLength": 2
+}

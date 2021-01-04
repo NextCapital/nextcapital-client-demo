@@ -13,10 +13,10 @@ class ColorService extends React.Component {
   };
 
   updateColors = () => {
-    const { ColorService } = getClient();
+    const { ColorService: ClientColorService } = getClient();
 
     this.state.overrides.forEach((value, key) => {
-      ColorService.setColor(key, value);
+      ClientColorService.setColor(key, value);
     });
 
     this.setState({ overrides: new Map() });
@@ -32,18 +32,19 @@ class ColorService extends React.Component {
   };
 
   renderSwatches() {
-    const { ColorService } = getClient();
+    const { ColorService: ClientColorService } = getClient();
 
-    return _.map(_.values(ColorService.COLORS), (colorName) => (
+    return _.map(_.values(ClientColorService.COLORS), (colorName) => (
       <Swatch
         key={ colorName}
         name={ colorName }
-        value={ this.state.overrides.get(colorName) || ColorService.getColor(colorName) }
+        value={ this.state.overrides.get(colorName) || ClientColorService.getColor(colorName) }
         onChange={ this.setColor }
       />
     ));
   }
 
+  /* eslint-disable max-len */
   render() {
     return (
       <Page>
@@ -73,6 +74,7 @@ class ColorService extends React.Component {
       </Page>
     );
   }
+  /* eslint-enable max-len */
 }
 
 export default ColorService;
