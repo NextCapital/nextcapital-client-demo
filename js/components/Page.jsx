@@ -3,6 +3,8 @@ import classnames from 'classnames';
 
 /**
  * Renders a simple page. For embedded applications, use the `fullScreen` prop.
+ *
+ * @param props
  */
 const Page = (props) => (
   <div className={ classnames('demo-page', props.className, { 'full-screen': props.fullScreen }) }>

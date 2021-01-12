@@ -4,6 +4,10 @@ import classnames from 'classnames';
 
 /**
  * Renders children with space between them, either vertically or horizontally.
+ *
+ * @param root0
+ * @param root0.children
+ * @param root0.horizontal
  */
 const SimpleSpacer = ({ children, horizontal }) => {
   const wrappedChildren = React.Children.map(children, (child, index) => {

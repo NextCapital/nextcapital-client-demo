@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
    */
   performLogin = async () => {
     const { Authentication } = getClient();
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true });
 
     const loginRequest = this.state.jwt ?
       Authentication.jwtLogin({ jwt: this.state.jwt }) :
@@ -103,7 +103,10 @@ class LoginPage extends React.Component {
           </div>
           <button
             onClick={ this.performLogin }
-            disabled={ this.state.isLoading || (!this.state.jwt && (!this.state.username || !this.state.password)) }
+            disabled={
+              this.state.isLoading ||
+              (!this.state.jwt && (!this.state.username || !this.state.password))
+            }
           >
             { this.state.isLoading ? 'logging in...' : 'Login' }
           </button>

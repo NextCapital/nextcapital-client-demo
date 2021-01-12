@@ -231,6 +231,8 @@ class DemoApplication extends React.Component {
 
     /**
      * Renders the login page or the current demo. See `react-router` documentation.
+     *
+     * @param props
      */
     return (
       <Router>
@@ -240,9 +242,9 @@ class DemoApplication extends React.Component {
               exact
               path='/'
               render={
-                () => isClientReady() ?
+                () => (isClientReady() ?
                   <Redirect to="/demos" /> :
-                  <Redirect to="/login" />
+                  <Redirect to="/login" />)
               }
             />
             <Route

@@ -51,7 +51,7 @@ class RICDemo extends React.Component {
           rows="24"
           cols="80"
           value={ this.getDisplayValue() }
-          readonly
+          readOnly
         />
         <SimpleSpacer horizontal>
           <button
@@ -79,7 +79,7 @@ class RICDemo extends React.Component {
           getChildren={ () => this.renderRICDemo() }
         />
       </Page>
-    )
+    );
   }
 }
 
