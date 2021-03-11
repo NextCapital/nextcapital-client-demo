@@ -8,6 +8,7 @@
   "scripts": {
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
     "build:styles": "node-sass ./styles/demo.scss ./dist/demo.css",
+    "ci:before": "npm ci",
     "ci": "npm run lint && npm run build",
     "clean": "rm -rf dist",
     "copy": "cp -a ./static/ ./dist",
