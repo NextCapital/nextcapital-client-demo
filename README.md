@@ -58,4 +58,4 @@ We've also added helpful in-code documentation throughout this codebase.
 
 ## NOTICE
 
-Copyright (c) 2020 NextCapital Group. All Rights Reserved.
+Copyright (c) 2021 NextCapital Group. All Rights Reserved.
