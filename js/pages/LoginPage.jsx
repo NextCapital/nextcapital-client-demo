@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import {
@@ -118,5 +119,10 @@ class LoginPage extends React.Component {
     );
   }
 }
+
+LoginPage.propTypes = {
+  authRequest: PropTypes.object,
+  history: PropTypes.object
+};
 
 export default withRouter(LoginPage);

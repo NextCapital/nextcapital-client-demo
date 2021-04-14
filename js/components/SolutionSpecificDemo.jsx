@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { getClient } from '@nextcapital/client';
@@ -9,7 +10,8 @@ import { getClient } from '@nextcapital/client';
  *
  * This prevents errors by only calling `getChildren` if the demo module exists.
  *
- * @param props
+ * @param {object} props React props
+ * @returns {React.Component} the solution-specific demo
  */
 const SolutionSpecificDemo = (props) => {
   const client = getClient();
@@ -23,6 +25,11 @@ const SolutionSpecificDemo = (props) => {
       Sorry, this demo isn&apos;t available for the current solution.
     </div>
   );
+};
+
+SolutionSpecificDemo.propTypes = {
+  getChildren: PropTypes.func,
+  module: PropTypes.string
 };
 
 export default SolutionSpecificDemo;

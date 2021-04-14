@@ -28,6 +28,8 @@ import RICDemo from './pages/RICDemo';
  * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
  *
  * This is a simple implementation of a deferred promise for this purpose.
+ *
+ * @returns {object} an object containing a promise
  */
 const defer = () => {
   const result = {};
@@ -73,6 +75,8 @@ const demos = [
  * The left side of the header. Renders the dropdown demo selector.
  *
  * This needs to be extracted to a component to so it can use react-router hooks.
+ *
+ * @returns {React.Component} the left side of the header
  */
 const HeaderLeft = () => {
   const location = useLocation();
@@ -106,6 +110,8 @@ const HeaderLeft = () => {
  * Renders the name of the current demo.
  *
  * This needs to be extracted to a component to so it can use react-router hooks.
+ *
+ * @returns {React.Component} the name of the current demo
  */
 const HeaderTitle = () => {
   const location = useLocation();
@@ -161,6 +167,8 @@ class DemoApplication extends React.Component {
 
   /**
    * Renders the logout button.
+   *
+   * @returns {React.Component} the logout button
    */
   renderHeaderRight() {
     return (
@@ -177,6 +185,8 @@ class DemoApplication extends React.Component {
 
   /**
    * Renders the top header bar.
+   *
+   * @returns {React.Component} the top header bar
    */
   renderHeader() {
     return (
@@ -190,6 +200,8 @@ class DemoApplication extends React.Component {
 
   /**
    * Renders a Route for each demo. See `react-router` documentation.
+   *
+   * @returns {React.Component} the current demo
    */
   renderCurrentDemo() {
     return (
@@ -222,6 +234,11 @@ class DemoApplication extends React.Component {
     );
   }
 
+  /**
+   * Renders the login page or the current demo. See `react-router` documentation.
+   *
+   * @returns {React.Component} the login page or current demo
+   */
   render() {
     if (this.state.isInitializing) {
       return (
@@ -229,11 +246,6 @@ class DemoApplication extends React.Component {
       );
     }
 
-    /**
-     * Renders the login page or the current demo. See `react-router` documentation.
-     *
-     * @param props
-     */
     return (
       <Router>
         <div className="demo-application">
