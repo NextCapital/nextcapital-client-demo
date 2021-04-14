@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 
 import { NextCapitalComponent } from '@nextcapital/client';
@@ -8,6 +9,8 @@ import Page from '../components/Page';
  * This demo renders the planning UI using `NextCapitalComponent`.
  *
  * It really is this easy!
+ *
+ * @returns {React.Component} the demo
  */
 const EmbeddedPlanningDemo = () => (
   <Page fullScreen>

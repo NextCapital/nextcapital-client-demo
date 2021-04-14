@@ -1,13 +1,15 @@
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 /**
  * Renders children with space between them, either vertically or horizontally.
  *
- * @param root0
- * @param root0.children
- * @param root0.horizontal
+ * @param {object} props React props
+ * @param {React.Component} [props.children] the children of the spacer
+ * @param {boolean} [props.horizontal] whether or not to lay the children out horizontally
+ * @returns {React.Component} children with space between them
  */
 const SimpleSpacer = ({ children, horizontal }) => {
   const wrappedChildren = React.Children.map(children, (child, index) => {
@@ -30,6 +32,11 @@ const SimpleSpacer = ({ children, horizontal }) => {
       { wrappedChildren }
     </div>
   );
+};
+
+SimpleSpacer.propTypes = {
+  children: PropTypes.node,
+  horizontal: PropTypes.bool
 };
 
 export default SimpleSpacer;

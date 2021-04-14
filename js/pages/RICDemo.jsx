@@ -16,6 +16,8 @@ class RICDemo extends React.Component {
 
   /**
    * Returns the RIC module from the remote client.
+   *
+   * @returns {object} the Retirement Income Calculator
    */
   get RIC() {
     return getClient().RIC;
@@ -23,6 +25,8 @@ class RICDemo extends React.Component {
 
   /**
    * Displays the API response (if present) or a message saying it has not yet loaded.
+   *
+   * @returns {string} the API response or message
    */
   getDisplayValue() {
     if (this.RIC.hasLoaded()) {
@@ -36,7 +40,7 @@ class RICDemo extends React.Component {
   /**
    * Loads the data, reloading if specified.
    *
-   * @param {boolean} reload
+   * @param {boolean} reload whether or not to force a reload on the RIC read
    */
   async loadData(reload = false) {
     this.setState({ loading: true });
