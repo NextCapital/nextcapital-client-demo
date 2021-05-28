@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 const getAbsolutePath = (relativePath) => path.resolve(__dirname, relativePath);
 
-module.exports = (env = 'sit', { solution = 'nextcapital' }) => ({
+module.exports = ({ env = 'sit', solution = 'nextcapital' }) => ({
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',

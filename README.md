@@ -23,7 +23,7 @@ Once the server is running, open `http://localhost:8080` in a browser to view th
 By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start` command like so:
 
 ```
-npm run start -- --solution=example
+npm run start -- --env solution=example
 ```
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
