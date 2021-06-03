@@ -12,7 +12,7 @@ https://github.com/nextcapital/nextcapital-client-demo/wiki
 
 ## Getting Started
 
-Please read the Quick Start Guide for the NextCapital Client before getting started.
+Please read the [Quick Start Guide](https://github.com/NextCapital/nextcapital-client-demo/wiki/Quick-Start-Guide) for the NextCapital Client before getting started.
 
 Simply run `npm install` to install all packages. Once everything is installed, you can run
 `npm run start` to start the dev server.
