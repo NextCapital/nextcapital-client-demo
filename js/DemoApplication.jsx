@@ -11,35 +11,14 @@ import {
 } from 'react-router-dom';
 
 import {
-  waitForConfiguredClient,
-  isClientReady
+  waitForConfiguredClient
 } from '@nextcapital/client';
 
-import PrivateRoute from './components/PrivateRoute';
-
-import LoginPage from './pages/LoginPage';
+import Page from './components/Page';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
-
-/**
- * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
- *
- * This is a simple implementation of a deferred promise for this purpose.
- *
- * @returns {object} an object containing a promise
- */
-const defer = () => {
-  const result = {};
-
-  result.promise = new Promise((resolve, reject) => {
-    result.resolve = resolve;
-    result.reject = reject;
-  });
-
-  return result;
-};
 
 // The set of demos to populate the dropdown with.
 const demos = [
@@ -122,8 +101,7 @@ const HeaderTitle = () => {
 
 class DemoApplication extends React.Component {
   state = {
-    isInitializing: true,
-    authRequest: defer()
+    isInitializing: true
   };
 
   /**
@@ -136,28 +114,11 @@ class DemoApplication extends React.Component {
    * See provided documentation on how best to use the `authenticate` call.
    */
   async componentDidMount() {
-    const { Authentication } = await waitForConfiguredClient();
-
-    await Authentication.authenticate({
-      onNeedsAuthentication: () => {
-        const authRequest = defer();
-        this.setState({ isInitializing: false, authRequest });
-        return authRequest.promise;
-      },
-      token: sessionStorage.getItem('nc-local-token') // keep auth after refresh
-    });
+    await waitForConfiguredClient();
 
     // refresh the view
     this.setState({ isInitializing: false });
   }
-
-  /**
-   * Ends the current session, which in this case means just ditching the token and refreshing.
-   */
-  logout = () => {
-    sessionStorage.removeItem('nc-local-token');
-    window.location.reload();
-  };
 
   /**
    * Renders the logout button.
@@ -166,14 +127,7 @@ class DemoApplication extends React.Component {
    */
   renderHeaderRight() {
     return (
-      <div className="header-right">
-        <button
-          className="logout"
-          onClick={ this.logout }
-        >
-          Logout
-        </button>
-      </div>
+      <div className="header-right" />
     );
   }
 
@@ -198,6 +152,16 @@ class DemoApplication extends React.Component {
    * @returns {React.Component} the current demo
    */
   renderCurrentDemo() {
+    if (this.state.isInitializing) {
+      return (
+        <div className="current-demo">
+          <Page>
+            <div>The configure call is running...</div>
+          </Page>
+        </div>
+      );
+    }
+
     return (
       <div className="current-demo">
         <Switch>
@@ -234,12 +198,6 @@ class DemoApplication extends React.Component {
    * @returns {React.Component} the login page or current demo
    */
   render() {
-    if (this.state.isInitializing) {
-      return (
-        <span>running the configure call...</span>
-      );
-    }
-
     return (
       <Router>
         <div className="demo-application">
@@ -247,27 +205,11 @@ class DemoApplication extends React.Component {
             <Route
               exact
               path='/'
-              render={
-                () => (isClientReady() ?
-                  <Redirect to="/demos" /> :
-                  <Redirect to="/login" />)
-              }
+              render={ () => <Redirect to="/demos" /> }
             />
-            <Route
-              exact
-              path="/login"
-              render={
-                (props) => (
-                  <LoginPage
-                    {...props}
-                    authRequest={ this.state.authRequest}
-                  />
-                )
-              }
-            />
-            <PrivateRoute path="/demos">
+            <Route path="/demos">
               { this.renderDemos() }
-            </PrivateRoute>
+            </Route>
             <Route path='*'>
               404 - NOT FOUND
             </Route>
