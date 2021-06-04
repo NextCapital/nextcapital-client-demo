@@ -22,7 +22,6 @@ import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
-import RICDemo from './pages/RICDemo';
 
 /**
  * We need the login page to be able to out-of-band resolve the `onNeedsAuthentication` promise.
@@ -63,11 +62,6 @@ const demos = [
     name: 'Color Service',
     route: '/demos/color-service',
     component: ColorService
-  },
-  {
-    name: 'RIC API',
-    route: '/demos/ric',
-    component: RICDemo
   }
 ];
 

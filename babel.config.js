@@ -11,7 +11,7 @@ module.exports = {
           chrome: '79',
           firefox: '72',
           safari: '13',
-          edge: '18'
+          edge: '79'
         }
       }
     ],

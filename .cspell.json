@@ -1,7 +1,6 @@
 {
   "allowCompoundWords": true,
   "ignoreWords": [
-    "RIC",
     "UX",
 
     "argify",
