@@ -17,7 +17,7 @@ window._ = _;
 configure({
   environment: {
     environmentClass: ENVIRONMENT_CLASS[NC_ENV],
-    accessType: ENVIRONMENT_ACCESS_TYPE.PROXY,
+    accessType: ENVIRONMENT_ACCESS_TYPE.DIRECT_CORS_PROXY,
     trackingEnabled: true,
     endpoint: '/api',
     authEndpoint: '/as/token.oauth2'
