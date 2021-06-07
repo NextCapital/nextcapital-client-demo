@@ -18,8 +18,8 @@
     "lint": "npm run lint:js && npm run lint:spelling",
     "lint:js": "eslint \"js/**/*.js?(x)\" --cache",
     "lint:spelling": "cspell \"js/**/*.js?(x)\" --no-progress",
-    "start": "npm run clean && npm run copy && npm run build:styles && webpack serve --config=./webpack.config.js",
-    "start:dev": "npm run start -- --env env=development"
+    "start": "npm run clean && npm run copy && npm run build:styles && node ./build-run.js",
+    "start:dev": "npm run start -- --env=development"
   },
   "dependencies": {
     "@nextcapital/client": "^1.2.3",
@@ -56,7 +56,6 @@
     "license-checker-rseidelsohn": "^1.2.2",
     "sass": "^1.34.1",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.7.0"
   }
 }

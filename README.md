@@ -19,12 +19,17 @@ Simply run `npm install` to install all packages. Once everything is installed, 
 
 Once the server is running, open `http://localhost:8080` in a browser to view the application.
 
-## Specifying a Solution
-By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start` command like so:
+## Specifying a Solution and Authentication
+When starting the demo application, you will need to provide both params for proxy authentication and a solution to use.
 
-```
-npm run start -- --env solution=example
-```
+For authentication, you can either provide a `jwt` bearer assertion to exchange or a `username`/`password` combo. For example:
+
+- `npm run start -- --solution=nextcapital --username=example@email.com --password=hunter2`
+- `npm run start -- --solution=nextcapital --jwt=<base64>`
+
+By default, the `nextcapital` solution will be used against the SIT environment. To use a different solution (eg: `example`), specify one with the `start`.
+
+Since this demo reflects that bleeding-edge state of the NC client, it currently does not work against UAT or other upper environments.
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
 
