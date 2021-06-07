@@ -1,6 +1,11 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
+/**
+ * To simplify things, rather than building a login page and actual session store, auth for a
+ * single user is provided when the server starts as arguments. We use the yargs library to parse
+ * them out.
+ */
 module.exports = yargs(hideBin(process.argv))
   .option('username', {
     alias: 'u',

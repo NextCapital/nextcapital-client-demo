@@ -35,6 +35,7 @@ const args = yargs(hideBin(process.argv))
   })
   .argv;
 
+// start a watching webpack process
 const webpackProcess = spawn(
   `npx`,
   `webpack --env env=${args.env} --env solution=${args.solution} --watch --progress`.split(' '),
@@ -45,6 +46,7 @@ const authParams = args.jwt ?
   `--jwt ${args.jwt}` :
   `--username ${args.username} --password ${args.password}`
 
+// start the actual node/express server
 const expressProcess = spawn(
   'node',
   `server/server.js ${authParams}`.split(' '),

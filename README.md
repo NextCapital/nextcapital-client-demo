@@ -15,7 +15,7 @@ https://github.com/nextcapital/nextcapital-client-demo/wiki
 Please read the [Quick Start Guide](https://github.com/NextCapital/nextcapital-client-demo/wiki/Quick-Start-Guide) for the NextCapital Client before getting started.
 
 Simply run `npm install` to install all packages. Once everything is installed, you can run
-`npm run start` to start the dev server.
+`npm run start` to start the dev server (see below for required arguments).
 
 Once the server is running, open `http://localhost:8080` in a browser to view the application.
 
@@ -27,13 +27,15 @@ For authentication, you can either provide a `jwt` bearer assertion to exchange 
 - `npm run start -- --solution=nextcapital --username=example@email.com --password=hunter2`
 - `npm run start -- --solution=nextcapital --jwt=<base64>`
 
-By default, the `nextcapital` solution will be used against the SIT environment. To use a different solution (eg: `example`), specify one with the `start`.
+By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start`.
 
-Since this demo reflects that bleeding-edge state of the NC client, it currently does not work against UAT or other upper environments.
+Since this demo reflects that bleeding-edge state of the NC client, it runs against the SIT environment. It currently does not work against UAT or other upper NextCapital environments.
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
 
 ## Codebase Overview
+
+### Client
 
 - The main entry point of the application is `js/index.jsx`.
   - This is where the application is configured and first rendered.
@@ -42,24 +44,22 @@ Not all demos will work with all solutions. If a demo is unsupported for the cur
 - Each demo lives within the `js/pages` folder.
   - These demos use shared React components from the `js/components` folder.
 - The main HTML page the application uses is `static/index.html`.
-- The webpack config (`webpack.config.js`) defines how the app is built, and also sets up the (required) CORS proxy.
+- The webpack config (`webpack.config.js`) defines how the app is built
+
+### Server
+- The demo express server lives at `server/server.js`
+- The API proxy exists at `server/proxy.js`
+- The minimal session handling live at `server/session.js`
 
 ## Important Notes
 
-To help make this demo more useful before a full auth integration is setup, this app makes use of
-a login page / credential login. Real-life applications should never display a login page or use
-credential login. That fact that we do so here means that the authentication integration here is
-significantly more complex than it would be in an actual application. See documentation for more.
+To help make this demo more useful before a full auth integration is setup, this app allows credential-based login. Real-life applications should never display a NextCapital-specific login page or use credential login to authenticate to NextCapital.
 
 ## Have questions?
 
 Feel free to ask. We will be glad to answer any question.
 
-### Documentation
-
-Additional documentation should be provided by NextCapital with this project.
-
-We've also added helpful in-code documentation throughout this codebase.
+Please first reference our documentation. We've also added helpful in-code documentation throughout this codebase.
 
 ## NOTICE
 

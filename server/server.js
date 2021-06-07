@@ -21,8 +21,11 @@ app.disable('x-powered-by');
 app.use(favicon(path.join(__dirname, '../static/favicon.png'))); // see serve-favicon package docs
 app.use(cookieParser());
 
-// Define routes
+// Static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
+
+// The actual API proxy. `Session.middleware` will acquire a token on the first request before
+// handing control over the to proxy.
 app.use('/api', Session.middleware.bind(Session), ApiProxy);
 
 // Start the server

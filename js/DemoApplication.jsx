@@ -105,29 +105,23 @@ class DemoApplication extends React.Component {
   };
 
   /**
-   * When the application mounts, authenticates the session. Re-uses the token from session storage
-   * if set, and redirects to the login page otherwise.
-   *
-   * NOTE: In a real-life scenario, there will never be a login page. So, overall, the
-   * authentication in this demo is more complex than it should be in real-life scenarios.
-   *
-   * See provided documentation on how best to use the `authenticate` call.
+   * Waits for the client to configure, then sets the initializing state to false.
    */
   async componentDidMount() {
     await waitForConfiguredClient();
-
-    // refresh the view
     this.setState({ isInitializing: false });
   }
 
   /**
-   * Renders the logout button.
+   * Renders a helpful link to documentation.
    *
-   * @returns {React.Component} the logout button
+   * @returns {React.Component}
    */
   renderHeaderRight() {
     return (
-      <div className="header-right" />
+      <div className="header-right">
+        <a href="https://github.com/NextCapital/nextcapital-client-demo/wiki">Documentation</a>
+      </div>
     );
   }
 
@@ -193,9 +187,9 @@ class DemoApplication extends React.Component {
   }
 
   /**
-   * Renders the login page or the current demo. See `react-router` documentation.
+   * Renders all of the routes for the application.
    *
-   * @returns {React.Component} the login page or current demo
+   * @returns {React.Component}
    */
   render() {
     return (
