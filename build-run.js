@@ -37,7 +37,7 @@ const args = yargs(hideBin(process.argv))
 
 const webpackProcess = spawn(
   `npx`,
-  `webpack --env env=${args.env} --env solution=${args.solution}`.split(' '),
+  `webpack --env env=${args.env} --env solution=${args.solution} --watch --progress`.split(' '),
   { stdio: 'inherit' }
 );
 
