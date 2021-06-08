@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
-    ['@babel/plugin-proposal-class-properties', { loose: true }]
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-private-methods', { loose: true }]
   ],
   presets: [
     [
@@ -11,7 +12,7 @@ module.exports = {
           chrome: '79',
           firefox: '72',
           safari: '13',
-          edge: '18'
+          edge: '79'
         }
       }
     ],

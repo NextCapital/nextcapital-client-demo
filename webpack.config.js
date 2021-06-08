@@ -37,22 +37,5 @@ module.exports = ({ env = 'sit', solution = 'nextcapital' }) => ({
   ],
   devtool: 'source-map',
   mode: 'development',
-  target: 'web',
-  devServer: { // Config for `npm run start` dev server
-    port: 8080,
-    contentBase: path.join(__dirname, 'dist'),
-    https: false,
-    hot: true,
-    proxy: [{ // Handles the CORS proxy for the SIT environment
-      context: '/api',
-      target: 'https://sit-pa.nextcapital.com',
-      changeOrigin: true,
-      secure: true
-    }, {
-      context: '/as',
-      target: 'https://sit-idp.nextcapital.com',
-      changeOrigin: true,
-      secure: true
-    }]
-  },
+  target: 'web'
 });
