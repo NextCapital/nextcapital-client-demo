@@ -43,9 +43,9 @@ const Session = {
 
     // otherwise, get a new one using the command-line args
     if (args.jwt) {
-      this.token = this.jwtExchange(args.jwt);
+      this.token = await this.jwtExchange(args.jwt);
     } else {
-      this.token = this.credentialLogin(args.username, args.password);
+      this.token = await this.credentialLogin(args.username, args.password);
     }
 
     return this.token;
@@ -80,10 +80,13 @@ const Session = {
    * @return {Promise<string>}
    */
   async jwtExchange(jwt) {
+    const converted = Buffer.from(jwt.split('.')[1], 'base64').toString('ascii');
+    const iss = JSON.parse(converted).iss; // client_id must match issuer
+
     const authResponse = await this._makeURLEncodedAuthRequest({
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: jwt,
-      client_id: 'componentui'
+      client_id: iss
     });
 
     return authResponse.access_token;
