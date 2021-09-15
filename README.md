@@ -20,6 +20,7 @@ Simply run `npm install` to install all packages. Once everything is installed, 
 Once the server is running, open `http://localhost:8080` in a browser to view the application.
 
 ## Specifying a Solution and Authentication
+
 When starting the demo application, you will need to provide both params for proxy authentication and a solution to use.
 
 For authentication, you can either provide a `jwt` bearer assertion to exchange or a `username`/`password` combo. For example:
@@ -29,7 +30,11 @@ For authentication, you can either provide a `jwt` bearer assertion to exchange 
 
 By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start`.
 
-Since this demo reflects that bleeding-edge state of the NC client, it runs against the SIT environment. It currently does not work against UAT or other upper NextCapital environments.
+Additionally, you may specify an environment with `env`:
+
+- `npm run start -- --solution=nextcapital --jwt=<base64> --env=uat`
+
+By default, the `sit` environment will be used. See [server/environments.json](server/environments.json) for a list available environments.
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
 
@@ -47,6 +52,7 @@ Not all demos will work with all solutions. If a demo is unsupported for the cur
 - The webpack config (`webpack.config.js`) defines how the app is built
 
 ### Server
+
 - The demo express server lives at `server/server.js`
 - The API proxy exists at `server/proxy.js`
 - The minimal session handling live at `server/session.js`

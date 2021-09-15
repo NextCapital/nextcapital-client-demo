@@ -19,8 +19,7 @@ configure({
     environmentClass: ENVIRONMENT_CLASS[NC_ENV],
     accessType: ENVIRONMENT_ACCESS_TYPE.PROXY,
     trackingEnabled: true,
-    endpoint: '/api',
-    authEndpoint: '/as/token.oauth2'
+    endpoint: '/api'
   },
   solutionId: SOLUTION_ID // set from webpack
 });

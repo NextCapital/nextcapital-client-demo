@@ -1,7 +1,8 @@
 const _ = require('lodash');
-
 const fetch = require('node-fetch');
+
 const args = require('./args');
+const environments = require('./environments.json');
 
 /**
  * A barebones, minimal "session store" needed to get stuff working. Your actual solution
@@ -9,7 +10,7 @@ const args = require('./args');
  */
 const Session = {
   token: null, // the token to set on proxied requests
-  endpoint: 'https://sit-idp.nextcapital.com/as/token.oauth2', // NC SIT auth endpoint
+  endpoint: _.get(environments, `${args.env}.authEndpoint`),
 
   /**
    * Middleware that gets the token and sets it on the request for later middleware (eg: the proxy)
@@ -18,7 +19,7 @@ const Session = {
    * @param {Req} req Express request
    * @param {Res} res Express response
    * @param {Function} next Express next function
-   * @return {Promise}
+   * @returns {Promise}
    */
   async middleware(req, res, next) {
     try {
@@ -33,7 +34,7 @@ const Session = {
   /**
    * Returns the existing token, or if not present, gets a token using the command line args.
    *
-   * @return {Promise<string>}
+   * @returns {Promise<string>}
    */
   async getToken() {
     // if we already got a token, re-use it
@@ -58,7 +59,7 @@ const Session = {
    *
    * @param {string} username
    * @param {string} password
-   * @return {Promise<string>}
+   * @returns {Promise<string>}
    */
   async credentialLogin(username, password) {
     const authResponse = await this._makeURLEncodedAuthRequest({
@@ -77,11 +78,11 @@ const Session = {
    * This should be what your solution uses in production.
    *
    * @param {string} jwt
-   * @return {Promise<string>}
+   * @returns {Promise<string>}
    */
   async jwtExchange(jwt) {
     const converted = Buffer.from(jwt.split('.')[1], 'base64').toString('ascii');
-    const iss = JSON.parse(converted).iss; // client_id must match issuer
+    const { iss } = JSON.parse(converted); // client_id must match issuer
 
     const authResponse = await this._makeURLEncodedAuthRequest({
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
@@ -96,7 +97,7 @@ const Session = {
    * Actually makes the request to the auth endpoint for the payload.
    *
    * @param {string} payload Body of the request
-   * @return {Promise<object>}
+   * @returns {Promise<object>}
    */
   async _makeURLEncodedAuthRequest(payload) {
     const body = new URLSearchParams();
