@@ -1,0 +1,18 @@
+{
+  "development": {
+    "authEndpoint": "https://sit-idp.nextcapital.com/as/token.oauth2",
+    "proxyEndpoint": "https://sit-pa.nextcapital.com"
+  },
+  "sit": {
+    "authEndpoint": "https://sit-idp.nextcapital.com/as/token.oauth2",
+    "proxyEndpoint": "https://sit-pa.nextcapital.com"
+  },
+  "uat": {
+    "authEndpoint": "https://uat-idp.nextcapital.com/as/token.oauth2",
+    "proxyEndpoint": "https://uat-pa.nextcapital.com"
+  },
+  "production": {
+    "authEndpoint": "https://prod-idp.nextcapital.com/as/token.oauth2",
+    "proxyEndpoint": "https://prod-pa.nextcapital.com"
+  }
+}

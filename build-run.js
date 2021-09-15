@@ -10,7 +10,7 @@ const args = yargs(hideBin(process.argv))
     alias: 'e',
     type: 'string',
     default: 'sit',
-    describe: 'nextcapital environment to use (sit or development)'
+    describe: 'nextcapital environment to use'
   })
   .option('solution', {
     alias: 's',
@@ -44,15 +44,14 @@ const webpackProcess = spawn(
 
 const authParams = args.jwt ?
   `--jwt ${args.jwt}` :
-  `--username ${args.username} --password ${args.password}`
+  `--username ${args.username} --password ${args.password}`;
 
 // start the actual node/express server
 const expressProcess = spawn(
   'node',
-  `server/server.js ${authParams}`.split(' '),
+  `server/server.js ${authParams} --env ${args.env}`.split(' '),
   { stdio: 'inherit' }
 );
 
 console.log(`\n\nRunning webpack on PID ${webpackProcess.pid} and express on PID ${expressProcess.pid}...`);
 console.log('Use Ctrl-C to exit both.\n\n');
-

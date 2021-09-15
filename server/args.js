@@ -22,4 +22,10 @@ module.exports = yargs(hideBin(process.argv))
     type: 'string',
     describe: 'jwt to use for bearer exchange'
   })
+  .option('env', {
+    alias: 'e',
+    type: 'string',
+    describe: 'backend environment to use for authorization',
+    default: 'sit'
+  })
   .argv;

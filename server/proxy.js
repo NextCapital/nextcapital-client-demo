@@ -1,4 +1,8 @@
+const _ = require('lodash');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+
+const args = require('./args');
+const environments = require('./environments.json');
 
 /**
  * This represents a minimal, bare-bones example of using a proxy to provide auth. In this case:
@@ -20,7 +24,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
  * a CSRF token to all requests.
  */
 const apiProxyOptions = {
-  target: 'https://sit-pa.nextcapital.com', // This example code always uses SIT
+  target: _.get(environments, `${args.env}.proxyEndpoint`),
   changeOrigin: true,
   timeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
   proxyTimeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
