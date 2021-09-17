@@ -29,9 +29,11 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', Session.middleware.bind(Session), ApiProxy);
 
 // Start the server
-app.listen(8080, () => console.log('server ready on port 8080'));
+app.listen(args.port, () => console.log(`server ready on port ${args.port}`));
 
 // Start LiveReload
-console.log('Livereload is watching files on port 8081...');
-const liveReloadServer = livereload.createServer({ delay: 100, port: 8081 });
-liveReloadServer.watch([path.resolve(__dirname, '../dist')]);
+if (args.liveReload) {
+  console.log('Livereload is watching files on port 8081...');
+  const liveReloadServer = livereload.createServer({ delay: 100, port: 8081 });
+  liveReloadServer.watch([path.resolve(__dirname, '../dist')]);
+}

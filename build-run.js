@@ -12,6 +12,11 @@ const args = yargs(hideBin(process.argv))
     default: 'sit',
     describe: 'nextcapital environment to use'
   })
+  .options('port', {
+    type: 'integer',
+    default: 8080,
+    describe: 'the port number for the localhost'
+  })
   .option('solution', {
     alias: 's',
     type: 'string',
@@ -33,6 +38,12 @@ const args = yargs(hideBin(process.argv))
     type: 'string',
     describe: 'jwt to use for bearer exchange'
   })
+  .option('liveReload', {
+    alias: 'r',
+    type: 'boolean',
+    default: true,
+    describe: 'whether to run the reload server, using port 8081'
+  })
   .argv;
 
 // start a watching webpack process
@@ -49,7 +60,7 @@ const authParams = args.jwt ?
 // start the actual node/express server
 const expressProcess = spawn(
   'node',
-  `server/server.js ${authParams} --env ${args.env}`.split(' '),
+  `server/server.js ${authParams} --env ${args.env} --port ${args.port} --live-reload ${args.liveReload}`.split(' '),
   { stdio: 'inherit' }
 );
 

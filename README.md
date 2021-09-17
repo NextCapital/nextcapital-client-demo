@@ -38,6 +38,17 @@ By default, the `sit` environment will be used. See [server/environments.json](s
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
 
+## Specifying the Localhost Port and Reload Watching
+
+When starting the demo application, there are additional optional params for specifying the port number and whether to live reload.
+
+- `--port=9000` -> the `nextcapital-client-demo` server will now start on `localhost:9000`.
+  - Defaults to port `8080`
+- `--no-live-reload` -> `nextcapital-client-demo` skips having the build watch for changes with auto reload
+  - The live reload server runs on port 8081 if started
+
+Example: `npm run start -- --solution=nextcapital --username=example@email.com --password=gatherer-2 --port=9090 --no-live-reload`
+
 ## Codebase Overview
 
 ### Client
