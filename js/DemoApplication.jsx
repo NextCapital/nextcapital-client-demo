@@ -115,7 +115,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders a helpful link to documentation.
    *
-   * @returns {React.Component}
+   * @returns {React.Component} the right section of the header bar
    */
   renderHeaderRight() {
     return (
@@ -189,7 +189,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders all of the routes for the application.
    *
-   * @returns {React.Component}
+   * @returns {React.Component} the demo application
    */
   render() {
     return (
