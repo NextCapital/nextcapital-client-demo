@@ -28,4 +28,15 @@ module.exports = yargs(hideBin(process.argv))
     describe: 'backend environment to use for authorization',
     default: 'sit'
   })
+  .options('port', {
+    type: 'integer',
+    default: 8080,
+    describe: 'the port number for the localhost'
+  })
+  .option('liveReload', {
+    alias: 'r',
+    type: 'boolean',
+    default: true,
+    describe: 'whether to run the reload server, using port 8081'
+  })
   .argv;
