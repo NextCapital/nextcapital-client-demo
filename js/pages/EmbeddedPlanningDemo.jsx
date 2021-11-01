@@ -22,7 +22,8 @@ const EmbeddedPlanningDemo = () => (
           onEnrollmentStart: () => console.log('Planning Demo: enrollment start callback called'),
           onUnenrolled: () => console.log('Planning Demo: unenrollment callback called'),
           onUnenrollmentStart: () => console.log('Planning Demo: unenrollment start callback called'),
-          onError: () => console.log('Planning Demo: an error has occurred')
+          onError: () => console.log('Planning Demo: an error has occurred'),
+          isIntegrationTesting: true
         })
       }
       loadingContent={ 'loading...' }
