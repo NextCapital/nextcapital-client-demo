@@ -1,5 +1,7 @@
 # Nextcapital Client Demo
 
+[![Node Version](https://img.shields.io/badge/node-%3E%3D%2016.13.0-brightgreen)](https://nodejs.org/)
+
 A simple application that demonstrates how to integrate with the NextCapital client.
 
 👉 NOTE: This repo is public! 👈
