@@ -57,8 +57,6 @@ class CopyHelperDemo extends React.Component {
       newCopyForKey: '',
       registeredCopy: this.formatRegisteredCopy()
     });
-
-    this.updateRegisteredCopy();
   };
 
   currentCopyForKey() {
