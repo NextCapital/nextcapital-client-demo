@@ -2,9 +2,13 @@
   "name": "nextcapital-client-demo",
   "version": "1.0.0",
   "description": "Demo of the NextCapital Client",
+  "main": "index.js",
   "author": "NextCapital Group",
   "license": "UNLICENSED",
-  "main": "index.js",
+  "engines": {
+    "node": ">=16.13.0",
+    "npm": ">=8.1.2"
+  },
   "scripts": {
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
     "build:styles": "sass ./styles/demo.scss ./dist/demo.css",
