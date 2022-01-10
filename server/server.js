@@ -8,8 +8,12 @@ const ApiProxy = require('./proxy');
 const Session = require('./session');
 const args = require('./args');
 
-if (!(args.jwt || (args.username && args.password))) {
-  console.error('please provide username/password or jwt');
+if (!(
+  args.jwt ||
+  args.accessToken ||
+  (args.username && args.password)
+)) {
+  console.error('please provide username/password, jwt, or accessToken');
   process.exit(1);
 }
 

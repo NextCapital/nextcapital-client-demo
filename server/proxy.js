@@ -4,6 +4,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const args = require('./args');
 const environments = require('./environments.json');
 
+const proxyEndpoint = (
+  args.proxyEndpoint ||
+  _.get(environments, `${args.env}.proxyEndpoint`)
+);
+
 /**
  * This represents a minimal, bare-bones example of using a proxy to provide auth. In this case:
  *
@@ -24,7 +29,7 @@ const environments = require('./environments.json');
  * a CSRF token to all requests.
  */
 const apiProxyOptions = {
-  target: _.get(environments, `${args.env}.proxyEndpoint`),
+  target: proxyEndpoint,
   changeOrigin: true,
   timeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
   proxyTimeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
