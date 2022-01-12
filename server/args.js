@@ -22,6 +22,11 @@ module.exports = yargs(hideBin(process.argv))
     type: 'string',
     describe: 'jwt to use for bearer exchange'
   })
+  .option('accessToken', {
+    alias: 'a',
+    type: 'string',
+    describe: 'the accessToken for the session. NOTE: Should not be combined with jwt arg'
+  })
   .option('env', {
     alias: 'e',
     type: 'string',
@@ -32,6 +37,10 @@ module.exports = yargs(hideBin(process.argv))
     type: 'integer',
     default: 8080,
     describe: 'the port number for the localhost'
+  })
+  .options('proxyEndpoint', {
+    type: 'string',
+    describe: 'the proxyEndpoint. NOTE: When not provided defaults to proxyEndpoint from the environments.json file'
   })
   .option('liveReload', {
     alias: 'r',

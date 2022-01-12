@@ -45,6 +45,8 @@ const Session = {
     // otherwise, get a new one using the command-line args
     if (args.jwt) {
       this.token = await this.jwtExchange(args.jwt);
+    } else if (args.accessToken) {
+      this.token = args.accessToken;
     } else {
       this.token = await this.credentialLogin(args.username, args.password);
     }

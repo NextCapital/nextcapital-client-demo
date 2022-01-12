@@ -17,6 +17,10 @@ const args = yargs(hideBin(process.argv))
     default: 8080,
     describe: 'the port number for the localhost'
   })
+  .options('proxyEndpoint', {
+    type: 'string',
+    describe: 'the proxyEndpoint. NOTE: When not provided defaults to proxyEndpoint from the environments.json file'
+  })
   .option('solution', {
     alias: 's',
     type: 'string',
@@ -38,6 +42,11 @@ const args = yargs(hideBin(process.argv))
     type: 'string',
     describe: 'jwt to use for bearer exchange'
   })
+  .option('accessToken', {
+    alias: 'a',
+    type: 'string',
+    describe: 'the accessToken for the session. NOTE: Should not be combined with jwt arg'
+  })
   .option('liveReload', {
     alias: 'r',
     type: 'boolean',
@@ -53,14 +62,21 @@ const webpackProcess = spawn(
   { stdio: 'inherit' }
 );
 
-const authParams = args.jwt ?
-  `--jwt ${args.jwt}` :
-  `--username ${args.username} --password ${args.password}`;
+let authParams = '';
+if (args.jwt) {
+  authParams = `--jwt ${args.jwt}`
+} else if (args.accessToken) {
+  authParams = `--accessToken ${args.accessToken}`
+} else if (args.username && args.password) {
+  authParams = `--username ${args.username} --password ${args.password}`;
+}
+
+const proxyEndpoint = args.proxyEndpoint ? `--proxyEndpoint ${args.proxyEndpoint}` : '';
 
 // start the actual node/express server
 const expressProcess = spawn(
   'node',
-  `server/server.js ${authParams} --env ${args.env} --port ${args.port} --live-reload ${args.liveReload}`.split(' '),
+  `server/server.js ${authParams} ${proxyEndpoint} --env ${args.env} --port ${args.port} --live-reload ${args.liveReload}`.split(' '),
   { stdio: 'inherit' }
 );
 
