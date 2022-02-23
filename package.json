@@ -12,8 +12,7 @@
   "scripts": {
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
     "build:styles": "sass ./styles/demo.scss ./dist/demo.css",
-    "ci:before": "npm ci",
-    "ci": "npm run lint && npm run build && npm run license",
+    "ci:local": "npm run lint && npm run build && npm run license",
     "clean": "rm -rf dist",
     "copy": "cp -a ./static/ ./dist",
     "license": "npm run license:production && npm run license:development",
