@@ -6,3 +6,5 @@ dist
 
 .eslintcache
 .sass-cache
+
+minimal-demo/dist

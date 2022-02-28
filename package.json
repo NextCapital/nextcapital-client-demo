@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
+    "build:minimal": "rm -rf minimal-demo/dist && webpack --config minimal-demo/webpack.config.js",
     "build:styles": "sass ./styles/demo.scss ./dist/demo.css",
     "ci:local": "npm run lint && npm run build && npm run license",
     "clean": "rm -rf dist",

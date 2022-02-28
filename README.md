@@ -72,6 +72,33 @@ Example: `npm run start -- --solution=nextcapital --username=example@email.com -
 - The API proxy exists at `server/proxy.js`
 - The minimal session handling live at `server/session.js`
 
+## Minimal Demo
+The [/minimal-demo](minimal-demo) folder contains are example consisting of:
+
+- `package.json` file to describe dependencies needed to build and run the client
+- `index.js` to configure and render the client
+- `webpack.config.json` webpack config to build the script
+- `babel.config.js` configuring webpack will use with babel, needed to transform React JSX
+- `index.html` an example html file with minimal client hookup
+
+Together, these files represent the absolute bare minimum of a working integration. This example doesn't work on its own: to get it to function, you'll need to:
+
+- Build a working NextCapital API proxy on your server
+- Include the resulting `demo.js` as a script into your existing HTML (and including any other potential HTML changes from our example)
+- Modify the `index.jsx` to complete any `TODO` entries.
+
+You can run `npm run build:minimal` at the top-level to build the javascript to the `minimal-demo/dist` folder. The `package.json` is a subset of this repos, so everything will build without issue.
+
+As you can see, Webpack will bundle React and all other dependencies together into a single JavaScript file that can be included in your application (when needed) just as you would any other script.
+
+In general, when `webpack-cli` is installed via `package.json`, you can invoke it as:
+
+```
+npx webpack --any --args --can --go --here
+```
+
+Ample documentation on webpack, babel, React. JSX, etc... exists elsewhere online if needed.
+
 ## Important Notes
 
 To help make this demo more useful before a full auth integration is setup, this app allows credential-based login. Real-life applications should never display a NextCapital-specific login page or use credential login to authenticate to NextCapital.
