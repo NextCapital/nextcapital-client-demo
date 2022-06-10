@@ -80,5 +80,9 @@ const expressProcess = spawn(
   { stdio: 'inherit' }
 );
 
+expressProcess.on('error', (error) => {
+  console.log(`NextCapital Client Demo build start error: ${error}`);
+});
+
 console.log(`\n\nRunning webpack on PID ${webpackProcess.pid} and express on PID ${expressProcess.pid}...`);
 console.log('Use Ctrl-C to exit both.\n\n');
