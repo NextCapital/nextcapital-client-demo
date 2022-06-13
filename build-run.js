@@ -76,7 +76,7 @@ const proxyEndpoint = args.proxyEndpoint ? `--proxyEndpoint ${args.proxyEndpoint
 // start the actual node/express server
 const expressProcess = spawn(
   'node',
-  `server/server.js ${authParams} ${proxyEndpoint} --env ${args.env} --port ${args.port} --live-reload ${args.liveReload}`.split(' '),
+  `server/server.js ${authParams} ${proxyEndpoint} --env ${args.env} --port ${args.port} --live-reload --verbose ${args.liveReload}`.split(' '),
   { stdio: 'inherit' }
 );
 
