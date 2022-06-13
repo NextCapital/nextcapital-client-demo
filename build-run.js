@@ -54,7 +54,7 @@ const args = yargs(hideBin(process.argv))
     describe: 'whether to run the reload server, using port 8081'
   })
   .argv;
-
+console.log("starting nc-client-demo from build-run");
 // start a watching webpack process
 const webpackProcess = spawn(
   `npx`,
