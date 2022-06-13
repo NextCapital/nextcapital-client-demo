@@ -22,7 +22,7 @@
     "lint": "npm run lint:js && npm run lint:spelling",
     "lint:js": "eslint \"js/**/*.js?(x)\" --cache",
     "lint:spelling": "cspell \"js/**/*.js?(x)\" --no-progress",
-    "start": "npm run clean && npm run copy && npm run build:styles && node ./build-run.js",
+    "start": "npm run clean && cp -a ./static/ ./dist && npm run build:styles && node ./build-run.js",
     "start:dev": "npm run start -- --env=development"
   },
   "dependencies": {
