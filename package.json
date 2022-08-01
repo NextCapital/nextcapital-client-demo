@@ -33,7 +33,7 @@
     "http-proxy-middleware": "^2.0.0",
     "livereload": "^0.9.3",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.10",
     "prop-types": "^15.7.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
