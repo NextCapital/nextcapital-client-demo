@@ -7,16 +7,6 @@ const { hideBin } = require('yargs/helpers');
  * them out.
  */
 module.exports = yargs(hideBin(process.argv))
-  .option('username', {
-    alias: 'u',
-    type: 'string',
-    describe: 'username to use for credential login'
-  })
-  .option('password', {
-    alias: 'p',
-    type: 'string',
-    describe: 'password to use for credential login'
-  })
   .option('jwt', {
     alias: 'j',
     type: 'string',

@@ -45,33 +45,11 @@ const Session = {
     // otherwise, get a new one using the command-line args
     if (args.jwt) {
       this.token = await this.jwtExchange(args.jwt);
-    } else if (args.accessToken) {
-      this.token = args.accessToken;
     } else {
-      this.token = await this.credentialLogin(args.username, args.password);
+      this.token = args.accessToken;
     }
 
     return this.token;
-  },
-
-  /**
-   * Gets a token using credential login.
-   *
-   * This is ONLY reccomended for development purposes!
-   *
-   * @param {string} username
-   * @param {string} password
-   * @returns {Promise<string>}
-   */
-  async credentialLogin(username, password) {
-    const authResponse = await this._makeURLEncodedAuthRequest({
-      username,
-      password,
-      client_id: 'ro_client',
-      grant_type: 'password'
-    });
-
-    return authResponse.access_token;
   },
 
   /**

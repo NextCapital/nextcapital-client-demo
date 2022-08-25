@@ -27,10 +27,10 @@ Once the server is running, open `http://localhost:8080` in a browser to view th
 
 When starting the demo application, you will need to provide both params for proxy authentication and a solution to use.
 
-For authentication, you can either provide a `jwt` bearer assertion to exchange or a `username`/`password` combo. For example:
+For authentication, you can either provide a `jwt` bearer assertion to exchange or a valid access token. For example:
 
-- `npm run start -- --solution=nextcapital --username=example@email.com --password=hunter2`
 - `npm run start -- --solution=nextcapital --jwt=<base64>`
+- `npm run start -- --solution=nextcapital --accessToken=<base64>`
 
 By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start`.
 
@@ -51,7 +51,7 @@ When starting the demo application, there are additional optional params for spe
 - `--no-live-reload` -> `nextcapital-client-demo` skips having the build watch for changes with auto reload
   - The live reload server runs on port 8081 if started
 
-Example: `npm run start -- --solution=nextcapital --username=example@email.com --password=gatherer-2 --port=9090 --no-live-reload`
+Example: `npm run start -- --solution=nextcapital --jwt=<base64> --port=9090 --no-live-reload`
 
 ## Codebase Overview
 
@@ -101,7 +101,7 @@ Ample documentation on webpack, babel, React. JSX, etc... exists elsewhere onlin
 
 ## Important Notes
 
-To help make this demo more useful before a full auth integration is setup, this app allows credential-based login. Real-life applications should never display a NextCapital-specific login page or use credential login to authenticate to NextCapital.
+Real-life applications should never display a NextCapital-specific login page or use credential login to authenticate to NextCapital.
 
 ## Have questions?
 
