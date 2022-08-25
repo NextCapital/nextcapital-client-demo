@@ -27,16 +27,6 @@ const args = yargs(hideBin(process.argv))
     default: 'nextcapital',
     describe: 'solution to use'
   })
-  .option('username', {
-    alias: 'u',
-    type: 'string',
-    describe: 'username to use for credential login'
-  })
-  .option('password', {
-    alias: 'p',
-    type: 'string',
-    describe: 'password to use for credential login'
-  })
   .option('jwt', {
     alias: 'j',
     type: 'string',
@@ -67,8 +57,6 @@ if (args.jwt) {
   authParams = `--jwt ${args.jwt}`
 } else if (args.accessToken) {
   authParams = `--accessToken ${args.accessToken}`
-} else if (args.username && args.password) {
-  authParams = `--username ${args.username} --password ${args.password}`;
 }
 
 const proxyEndpoint = args.proxyEndpoint ? `--proxyEndpoint ${args.proxyEndpoint}` : '';
