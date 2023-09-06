@@ -6,8 +6,8 @@
   "author": "NextCapital Group",
   "license": "UNLICENSED",
   "engines": {
-    "node": ">=16.13.0",
-    "npm": ">=8.3.1"
+    "node": ">=18.17.0 <19.0.0",
+    "npm": ">=9.6.7 <10.0.0"
   },
   "scripts": {
     "build": "npm run clean && npm run copy && npm run build:styles && webpack",
