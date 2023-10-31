@@ -10,10 +10,9 @@ module.exports = {
       {
         modules: false,
         targets: {
-          chrome: '79',
-          firefox: '72',
-          safari: '13',
-          edge: '79'
+          chrome: '108',
+          firefox: '115',
+          safari: '15'
         }
       }
     ],

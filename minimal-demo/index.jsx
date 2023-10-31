@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import {
   configure,
@@ -39,9 +39,12 @@ const DemoApplication = () => (
 
 // Wait for the page to be ready, then render the application...
 window.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <DemoApplication />,
+  const root = ReactDOM.createRoot(
     document.querySelector('.render-target') // TODO: target correct element
+  );
+
+  root.render(
+    <DemoApplication />
   );
 });
 
