@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import _ from 'lodash';
 
 import {
@@ -26,8 +26,8 @@ configure({
 
 // Wait for the page to be ready, then render the application...
 window.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
+  const root = ReactDOM.createRoot(document.querySelector('.render-target'));
+  root.render(
     <DemoApplication />,
-    document.querySelector('.render-target')
   );
 });
