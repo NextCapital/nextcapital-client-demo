@@ -11,6 +11,10 @@
     "authEndpoint": "https://uat-idp.nextcapital.com/as/token.oauth2",
     "proxyEndpoint": "https://uat-app.nextcapital.com"
   },
+  "stg": {
+    "authEndpoint": "https://stg-idp.nextcapital.com/as/token.oauth2",
+    "proxyEndpoint": "https://stg-app.nextcapital.com"
+  },
   "production": {
     "authEndpoint": "https://prod-idp.nextcapital.com/as/token.oauth2",
     "proxyEndpoint": "https://prod-app.nextcapital.com"
