@@ -2,19 +2,18 @@ name: CI
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+env:
+  node_version: lts/jod
 jobs:
   dependencies-cache:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      matrix:
-        node-version: [lts/hydrogen]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ env.node_version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.node_version }}
     - uses: actions/cache@v3
       id: node-modules-cache
       with:
@@ -27,15 +26,12 @@ jobs:
     needs: dependencies-cache
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      matrix:
-        node-version: [lts/hydrogen]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ env.node_version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.node_version }}
     - uses: actions/cache@v3
       id: node-modules-cache
       with:
@@ -47,15 +43,12 @@ jobs:
     needs: dependencies-cache
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      matrix:
-        node-version: [lts/hydrogen]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ env.node_version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.node_version }}
     - uses: actions/cache@v3
       id: node-modules-cache
       with:
@@ -67,15 +60,12 @@ jobs:
     needs: dependencies-cache
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      matrix:
-        node-version: [lts/hydrogen]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ env.node_version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.node_version }}
     - uses: actions/cache@v3
       id: node-modules-cache
       with:
