@@ -28,8 +28,8 @@
   "dependencies": {
     "@nextcapital/client": "^2.5.0",
     "classnames": "^2.3.1",
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
     "http-proxy-middleware": "^2.0.0",
     "livereload": "^0.9.3",
     "lodash": "^4.17.21",
