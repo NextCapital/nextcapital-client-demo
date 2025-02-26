@@ -28,6 +28,6 @@ configure({
 window.addEventListener('DOMContentLoaded', () => {
   const root = ReactDOM.createRoot(document.querySelector('.render-target'));
   root.render(
-    <DemoApplication />,
+    <DemoApplication />
   );
 });

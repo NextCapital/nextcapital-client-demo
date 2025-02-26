@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 /**
- * Normalizes color by making it an rgb value
+ * Normalizes color by making it an rgb value.
  *
- * @param {string} color the color to normalize
- * @returns {string} the normalized color
+ * @param {string} color The color to normalize.
+ * @returns {string} The normalized color.
  */
 const normalizeColor = (color) => {
   if (color.length === 4) {
@@ -20,20 +20,21 @@ const normalizeColor = (color) => {
 };
 
 /**
- * A demo of a color swatch
+ * A demo of a color swatch.
  *
- * @param {object} props React props
- * @returns {React.Component} the color swatch demo
+ * @param {object} props React props.
+ * @returns {React.Component} The color swatch demo.
  */
 const Swatch = (props) => (
   <div className="demo-swatch">
     <label>
-      {props.name}:
-      <input
-        type="color"
-        value={ normalizeColor(props.value) }
-        onChange={ (e) => props.onChange(props.name, e.target.value) }
-      />
+      {props.name}
+:
+<input
+  type="color"
+  value={ normalizeColor(props.value) }
+  onChange={ (e) => props.onChange(props.name, e.target.value) }
+/>
     </label>
   </div>
 );

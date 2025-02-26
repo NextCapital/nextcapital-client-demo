@@ -25,6 +25,7 @@ import SimpleSpacer from '../components/SimpleSpacer';
  * break without notice. See provided documentation.
  */
 class CopyHelperDemo extends React.Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     registeredCopy: this.formatRegisteredCopy(),
     keyToEdit: '',
@@ -81,7 +82,7 @@ class CopyHelperDemo extends React.Component {
     );
   }
 
-  /* eslint-disable max-len */
+  /* eslint-disable @stylistic/max-len */
   render() {
     return (
       <Page>
@@ -92,7 +93,12 @@ class CopyHelperDemo extends React.Component {
             <span>This tool is currently: </span>
             <span>{ this.copyHelper.isCopyDebugging() ? 'Enabled' : 'Disabled' }</span>
           </div>
-          <button onClick={ this.toggleDebugger }>Toggle Enabled</button>
+          <button
+            type="button"
+            onClick={ this.toggleDebugger }
+          >
+            Toggle Enabled
+          </button>
           <h2>View Existing Copy</h2>
           <div>Tools also allow viewing all configured copy for the application.</div>
           <textarea
@@ -126,6 +132,7 @@ class CopyHelperDemo extends React.Component {
             onChange={ (e) => this.setState({ newCopyForKey: e.target.value }) }
           />
           <button
+            type="button"
             onClick={ this.updateCopyForKey }
             disabled={ !this.canUpdate() }
           >
@@ -136,7 +143,7 @@ class CopyHelperDemo extends React.Component {
       </Page>
     );
   }
-  /* eslint-enable max-len */
+  /* eslint-enable @stylistic/max-len */
 }
 
 export default CopyHelperDemo;

@@ -10,7 +10,7 @@ import Page from '../components/Page';
  *
  * It really is this easy!
  *
- * @returns {React.Component} the demo
+ * @returns {React.Component} The demo element.
  */
 const EmbeddedPlanningDemo = () => (
   <Page fullScreen>
@@ -25,7 +25,7 @@ const EmbeddedPlanningDemo = () => (
           onError: () => console.log('Planning Demo: an error has occurred')
         })
       }
-      loadingContent={ 'loading...' }
+      loadingContent="loading..."
     />
   </Page>
 );
