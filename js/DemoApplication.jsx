@@ -49,7 +49,7 @@ const demos = [
  *
  * This needs to be extracted to a component to so it can use react-router hooks.
  *
- * @returns {React.Component} the left side of the header
+ * @returns {React.Component} The left side of the header.
  */
 const HeaderLeft = () => {
   const location = useLocation();
@@ -67,7 +67,7 @@ const HeaderLeft = () => {
         {
           _.map(demos, (demo, key) => (
             <option
-              key={ key}
+              key={ key }
               value={ demo.route }
             >
               { demo.name }
@@ -84,7 +84,7 @@ const HeaderLeft = () => {
  *
  * This needs to be extracted to a component to so it can use react-router hooks.
  *
- * @returns {React.Component} the name of the current demo
+ * @returns {React.Component} The name of the current demo.
  */
 const HeaderTitle = () => {
   const location = useLocation();
@@ -100,6 +100,7 @@ const HeaderTitle = () => {
 };
 
 class DemoApplication extends React.Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     isInitializing: true
   };
@@ -115,7 +116,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders a helpful link to documentation.
    *
-   * @returns {React.Component} the right section of the header bar
+   * @returns {React.Component} The right section of the header bar.
    */
   renderHeaderRight() {
     return (
@@ -128,7 +129,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders the top header bar.
    *
-   * @returns {React.Component} the top header bar
+   * @returns {React.Component} The top header bar.
    */
   renderHeader() {
     return (
@@ -143,7 +144,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders a Route for each demo. See `react-router` documentation.
    *
-   * @returns {React.Component} the current demo
+   * @returns {React.Component} The current demo element.
    */
   renderCurrentDemo() {
     if (this.state.isInitializing) {
@@ -189,7 +190,7 @@ class DemoApplication extends React.Component {
   /**
    * Renders all of the routes for the application.
    *
-   * @returns {React.Component} the demo application
+   * @returns {React.Component} The demo application element.
    */
   render() {
     return (
@@ -198,13 +199,13 @@ class DemoApplication extends React.Component {
           <Switch>
             <Route
               exact
-              path='/'
+              path="/"
               render={ () => <Redirect to="/demos" /> }
             />
             <Route path="/demos">
               { this.renderDemos() }
             </Route>
-            <Route path='*'>
+            <Route path="*">
               404 - NOT FOUND
             </Route>
           </Switch>

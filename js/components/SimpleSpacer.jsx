@@ -6,10 +6,10 @@ import classnames from 'classnames';
 /**
  * Renders children with space between them, either vertically or horizontally.
  *
- * @param {object} props React props
- * @param {React.Component} [props.children] the children of the spacer
- * @param {boolean} [props.horizontal] whether or not to lay the children out horizontally
- * @returns {React.Component} children with space between them
+ * @param {object} props React props.
+ * @param {React.Component} [props.children] The children of the spacer component.
+ * @param {boolean} [props.horizontal] Whether or not to lay the children out horizontally.
+ * @returns {React.Component} Children with space between them.
  */
 const SimpleSpacer = ({ children, horizontal }) => {
   const wrappedChildren = React.Children.map(children, (child, index) => {

@@ -10,8 +10,8 @@ import { getClient } from '@nextcapital/client';
  *
  * This prevents errors by only calling `getChildren` if the demo module exists.
  *
- * @param {object} props React props
- * @returns {React.Component} the solution-specific demo
+ * @param {object} props All React props for the component.
+ * @returns {React.Component} The solution-specific demo element.
  */
 const SolutionSpecificDemo = (props) => {
   const client = getClient();

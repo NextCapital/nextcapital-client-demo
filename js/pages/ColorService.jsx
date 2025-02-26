@@ -8,6 +8,7 @@ import SimpleSpacer from '../components/SimpleSpacer';
 import Swatch from '../components/Swatch';
 
 class ColorService extends React.Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     overrides: new Map()
   };
@@ -36,7 +37,7 @@ class ColorService extends React.Component {
 
     return _.map(_.values(ClientColorService.COLORS), (colorName) => (
       <Swatch
-        key={ colorName}
+        key={ colorName }
         name={ colorName }
         value={ this.state.overrides.get(colorName) || ClientColorService.getColor(colorName) }
         onChange={ this.setColor }
@@ -44,7 +45,7 @@ class ColorService extends React.Component {
     ));
   }
 
-  /* eslint-disable max-len */
+  /* eslint-disable @stylistic/max-len */
   render() {
     return (
       <Page>
@@ -53,12 +54,14 @@ class ColorService extends React.Component {
           <div>NOTE: This view does not handle colors with transparencies very well. They will produce many console warnings.</div>
           <SimpleSpacer horizontal>
             <button
+              type="button"
               onClick={ this.updateColors }
               disabled={ this.state.overrides.size === 0 }
             >
               Update Colors
             </button>
             <button
+              type="button"
               onClick={ this.resetColors }
               disabled={ this.state.overrides.size === 0 }
             >
@@ -74,7 +77,7 @@ class ColorService extends React.Component {
       </Page>
     );
   }
-  /* eslint-enable max-len */
+  /* eslint-enable @stylistic/max-len */
 }
 
 export default ColorService;
