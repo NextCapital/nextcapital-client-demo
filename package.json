@@ -30,7 +30,7 @@
     "classnames": "^2.3.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^2.0.0",
+    "http-proxy-middleware": "^2.0.9",
     "livereload": "^0.9.3",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
