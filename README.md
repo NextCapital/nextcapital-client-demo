@@ -29,7 +29,7 @@ Once the server is running, open `http://localhost:8080` in a browser to view th
 
 When starting the demo application, you will need to provide both params for proxy authentication and a solution to use.
 
-For authentication, you can either provide a `jwt` bearer assertion(to exchange for an access token) or a valid access token (to directly use against the API). For example:
+For authentication, you can either provide a `jwt` bearer assertion (to exchange for an access token) or a valid access token (to directly use against the API). For example:
 
 - `npm run start -- --solution=nextcapital --exchange-token=jwt:goes:here`
 - `npm run start -- --solution=nextcapital --access-token=jwt:goes:here`
