@@ -8,8 +8,9 @@ const ApiProxy = require('./proxy');
 const Session = require('./session');
 const args = require('./args');
 
-if (!(args.jwt || args.accessToken)) {
-  console.error('please provide jwt or accessToken');
+// ensure the proper arguments are present
+if (!(args.exchangeToken || args.accessToken)) {
+  console.error('please provide exchange or access token');
   process.exit(1);
 }
 
@@ -21,7 +22,7 @@ app.disable('x-powered-by');
 app.use(favicon(path.join(__dirname, '../static/favicon.png'))); // see serve-favicon package docs
 app.use(cookieParser());
 
-// Static assets
+// Setup static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // The actual API proxy. `Session.middleware` will acquire a token on the first request before

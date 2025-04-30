@@ -7,18 +7,15 @@ const { hideBin } = require('yargs/helpers');
  * them out.
  */
 module.exports = yargs(hideBin(process.argv))
-  .option('jwt', {
-    alias: 'j',
+  .option('exchangeToken', {
     type: 'string',
     describe: 'jwt to use for bearer exchange'
   })
   .option('accessToken', {
-    alias: 'a',
     type: 'string',
     describe: 'the accessToken for the session. NOTE: Should not be combined with jwt arg'
   })
   .option('env', {
-    alias: 'e',
     type: 'string',
     describe: 'backend environment to use for authorization',
     default: 'sit'
@@ -33,7 +30,6 @@ module.exports = yargs(hideBin(process.argv))
     describe: 'the proxyEndpoint. NOTE: When not provided defaults to proxyEndpoint from the environments.json file'
   })
   .option('liveReload', {
-    alias: 'r',
     type: 'boolean',
     default: true,
     describe: 'whether to run the reload server, using port 8081'

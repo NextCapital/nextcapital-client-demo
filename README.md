@@ -6,7 +6,9 @@
 
 A simple application that demonstrates how to integrate with the NextCapital client.
 
+<!--
 👉 NOTE: This repo is public! 👈
+-->
 
 ## Full Documentation
 
@@ -27,20 +29,22 @@ Once the server is running, open `http://localhost:8080` in a browser to view th
 
 When starting the demo application, you will need to provide both params for proxy authentication and a solution to use.
 
-For authentication, you can either provide a `jwt` bearer assertion to exchange or a valid access token. For example:
+For authentication, you can either provide a `jwt` bearer assertion(to exchange for an access token) or a valid access token (to directly use against the API). For example:
 
-- `npm run start -- --solution=nextcapital --jwt=<base64>`
-- `npm run start -- --solution=nextcapital --accessToken=<base64>`
+- `npm run start -- --solution=nextcapital --exchange-token=jwt:goes:here`
+- `npm run start -- --solution=nextcapital --access-token=jwt:goes:here`
 
-By default, the `nextcapital` solution will be used. To use a different solution (eg: `example`), specify one with the `start`.
+By default, the `nextcapital` solution will be used if one is not specified.
 
 Additionally, you may specify an environment with `env`:
 
-- `npm run start -- --solution=nextcapital --jwt=<base64> --env=uat`
+- `npm run start -- --solution=nextcapital --exchange-token=<base64> --env=uat`
 
 By default, the `sit` environment will be used. See [server/environments.json](server/environments.json) for a list available environments.
 
 Not all demos will work with all solutions. If a demo is unsupported for the current solution, a message will display when that demo is selected.
+
+JWTs have a limited lifetime. You'll need to restart and use a new JWT once the old one expires.
 
 ## Specifying the Localhost Port and Reload Watching
 
@@ -51,7 +55,7 @@ When starting the demo application, there are additional optional params for spe
 - `--no-live-reload` -> `nextcapital-client-demo` skips having the build watch for changes with auto reload
   - The live reload server runs on port 8081 if started
 
-Example: `npm run start -- --solution=nextcapital --jwt=<base64> --port=9090 --no-live-reload`
+Example: `npm run start -- --solution=nextcapital --exchange-token=<base64> --port=9090 --no-live-reload`
 
 ## Codebase Overview
 
@@ -70,10 +74,10 @@ Example: `npm run start -- --solution=nextcapital --jwt=<base64> --port=9090 --n
 
 - The demo express server lives at `server/server.js`
 - The API proxy exists at `server/proxy.js`
-- The minimal session handling live at `server/session.js`
+- The minimal session handling logic lives at `server/session.js`
 
 ## Minimal Demo
-The [/minimal-demo](minimal-demo) folder contains are example consisting of:
+The [/minimal-demo](minimal-demo) folder contains an example consisting of:
 
 - `package.json` file to describe dependencies needed to build and run the client
 - `index.js` to configure and render the client
@@ -87,7 +91,7 @@ Together, these files represent the absolute bare minimum of a working integrati
 - Include the resulting `demo.js` as a script into your existing HTML (and including any other potential HTML changes from our example)
 - Modify the `index.jsx` to complete any `TODO` entries.
 
-You can run `npm run build:minimal` at the top-level to build the javascript to the `minimal-demo/dist` folder. The `package.json` is a subset of this repos, so everything will build without issue.
+You can run `npm run build:minimal` at the top-level to build the javascript to the `minimal-demo/dist` folder. The `package.json` is a subset of this repo, so everything will build without issue.
 
 As you can see, Webpack will bundle React and all other dependencies together into a single JavaScript file that can be included in your application (when needed) just as you would any other script.
 
@@ -99,16 +103,12 @@ npx webpack --any --args --can --go --here
 
 Ample documentation on webpack, babel, React. JSX, etc... exists elsewhere online if needed.
 
-## Important Notes
-
-Real-life applications should never display a NextCapital-specific login page or use credential login to authenticate to NextCapital.
-
 ## Have questions?
 
-Feel free to ask. We will be glad to answer any question.
+Feel free to ask! We will be glad to answer any question.
 
 Please first reference our documentation. We've also added helpful in-code documentation throughout this codebase.
 
 ## NOTICE
 
-Copyright (c) 2021 NextCapital Group. All Rights Reserved.
+Copyright (c) 2025 Goldman Sachs Asset Management. All Rights Reserved.
