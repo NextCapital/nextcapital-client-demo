@@ -34,21 +34,23 @@ const apiProxyOptions = {
   timeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
   proxyTimeout: 1000 * 60 * 5, // 5 minutes, NextCapital's server will timeout first
 
-  /**
-   * Handler called before the request is made to NextCapital's server. Here, we add the
-   * Authorization header with the token.
-   *
-   * @param {NodeRequest} proxyReq The native node request object to NextCapital. This is missing
-   *  most of the stuff that express adds.
-   * @param {Request} req The Express request
-   */
-  onProxyReq: (proxyReq, req) => {
-    proxyReq.setHeader('Authorization', `Bearer ${req.token}`);
-  },
+  on: {
+    /**
+     * Handler called before the request is made to NextCapital's server. Here, we add the
+     * Authorization header with the token.
+     *
+     * @param {NodeRequest} proxyReq The native node request object to NextCapital. This is missing
+     *  most of the stuff that express adds.
+     * @param {Request} req The Express request
+     */
+    proxyReq: (proxyReq, req) => {
+      proxyReq.setHeader('Authorization', `Bearer ${req.token}`);
+    },
 
-  onProxyRes: () => {
-    // while not handled here, it is probably a good idea for you to re-acquire auth and retry
-    // once when a 401 is seen (eg: if the old session expired).
+    proxyRes: () => {
+      // while not handled here, it is probably a good idea for you to re-acquire auth and retry
+      // once when a 401 is seen (eg: if the old session expired).
+    }
   }
 };
 
