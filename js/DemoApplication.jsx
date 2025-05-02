@@ -18,6 +18,7 @@ import Page from './components/Page';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
+import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
 
@@ -37,6 +38,11 @@ const demos = [
     name: 'Current Readiness',
     route: '/demos/current-readiness',
     component: CurrentReadinessDemo
+  },
+  {
+    name: 'Retirement Report Card',
+    route: '/demos/retirement-report-card',
+    component: RetirementReportCardDemo
   },
   {
     name: 'Copy Helper',
