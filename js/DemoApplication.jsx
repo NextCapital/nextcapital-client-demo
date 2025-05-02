@@ -17,6 +17,7 @@ import {
 import Page from './components/Page';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
+import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
 
@@ -31,6 +32,11 @@ const demos = [
     name: 'Embedded Planning',
     route: '/demos/embedded-planning',
     component: EmbeddedPlanning
+  },
+  {
+    name: 'Current Readiness',
+    route: '/demos/current-readiness',
+    component: CurrentReadinessDemo
   },
   {
     name: 'Copy Helper',
@@ -102,15 +108,21 @@ const HeaderTitle = () => {
 class DemoApplication extends React.Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
-    isInitializing: true
+    isInitializing: true,
+    failedToConfigure: false,
   };
 
   /**
    * Waits for the client to configure, then sets the initializing state to false.
    */
   async componentDidMount() {
-    await waitForConfiguredClient();
-    this.setState({ isInitializing: false });
+    try {
+      await waitForConfiguredClient();
+      this.setState({ isInitializing: false });
+    } catch (ex) {
+      console.error(ex);
+      this.setState({ isInitializing: false, failedToConfigure: true });
+    }
   }
 
   /**
@@ -152,6 +164,16 @@ class DemoApplication extends React.Component {
         <div className="current-demo">
           <Page>
             <div>The configure call is running...</div>
+          </Page>
+        </div>
+      );
+    }
+
+    if (this.state.failedToConfigure) {
+      return (
+        <div className="current-demo">
+          <Page>
+            <div>The configure call failed. Check developer tools.</div>
           </Page>
         </div>
       );

@@ -131,3 +131,28 @@ body {
     margin-left: 6px;
   }
 }
+
+.widget-box {
+  margin: 20px;
+  border: 1px dotted black;
+
+  &.width-small {
+    max-width: 320px;
+  }
+
+  &.width-medium {
+    max-width: 800px;
+  }
+
+  &.width-full {
+    width: 100%;
+  }
+
+  &.width-auto {
+    width: auto;
+  }
+
+  &.height-auto {
+    height: auto;
+  }
+}
