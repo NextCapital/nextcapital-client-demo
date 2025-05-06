@@ -21,7 +21,7 @@ configure({
     trackingEnabled: true,
     endpoint: '/api'
   },
-  solutionId: SOLUTION_ID // set from webpack
+  solutionId: SOLUTION_ID // set from webpack `DefinePlugin`
 });
 
 // Wait for the page to be ready, then render the application...

@@ -44,7 +44,11 @@ module.exports = [
 
       'react/no-array-index-key': 'off',
       'react/jsx-fragments': ['error', 'element'],
-      'react/sort-comp': 'off'
+      'react/sort-comp': 'off',
+      'react/prop-types': 'off',
+
+      'no-console': 'off',
+      'no-alert': 'off'
     }
   },
   {

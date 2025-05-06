@@ -4,7 +4,7 @@
 
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/Nextcapital/nextcapital-client-demo/master) [![Node Version](https://img.shields.io/badge/node--lts-%3E%3D%2018.17.0-brightgreen)](https://nodejs.org/)
 
-A simple application that demonstrates how to integrate with the NextCapital client.
+A simple application that demonstrates how to integrate with the NextCapital Client.
 
 <!--
 👉 NOTE: This repo is public! 👈
