@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 
 import { NextCapitalComponent } from '@nextcapital/client';
@@ -7,7 +8,7 @@ import Page from '../components/Page';
 import WidgetBox from '../components/WidgetBox';
 
 const CurrentReadinessWidget = () => (
-  <WidgetBox width='medium' height='auto'>
+  <WidgetBox width="medium" height="auto">
     <NextCapitalComponent
       getEmbed={
         (client) => new client.CurrentReadiness()
@@ -18,9 +19,7 @@ const CurrentReadinessWidget = () => (
 );
 
 /**
- * This demo renders the planning UI using `NextCapitalComponent`.
- *
- * It really is this easy!
+ * This demo renders the current readiness widget UI using `NextCapitalComponent`.
  *
  * @returns {React.Component} The demo element.
  */
@@ -28,7 +27,7 @@ const CurrentReadinessDemo = () => (
   <Page fullScreen>
     <SolutionSpecificDemo
       getChildren={ () => <CurrentReadinessWidget /> }
-      module='CurrentReadiness'
+      module="CurrentReadiness"
     />
   </Page>
 );

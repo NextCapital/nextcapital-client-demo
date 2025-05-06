@@ -115,7 +115,7 @@ class DemoApplication extends React.Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     isInitializing: true,
-    failedToConfigure: false,
+    failedToConfigure: false
   };
 
   /**
@@ -125,8 +125,7 @@ class DemoApplication extends React.Component {
     try {
       await waitForConfiguredClient();
       this.setState({ isInitializing: false });
-    } catch (ex) {
-      console.error(ex);
+    } catch {
       this.setState({ isInitializing: false, failedToConfigure: true });
     }
   }
