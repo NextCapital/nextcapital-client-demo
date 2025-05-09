@@ -11,7 +11,9 @@ const CurrentReadinessWidget = () => (
   <WidgetBox width="medium" height="auto">
     <NextCapitalComponent
       getEmbed={
-        (client) => new client.CurrentReadiness()
+        (client) => new client.CurrentReadiness({
+          onNavigateToFullExperience: () => window.alert('personalize button clicked!')
+        })
       }
       loadingContent="loading..."
     />
