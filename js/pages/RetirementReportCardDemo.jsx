@@ -12,7 +12,9 @@ const RetirementReportCardWidget = () => (
     <NextCapitalComponent
       getEmbed={
         (client) => new client.RetirementReportCard({
-          onButtonClick: () => window.alert('button clicked!')
+          onButtonClick: (targetState) => window.alert(
+            `button clicked! expected to perform SSO for target state: ${targetState}`
+          )
         })
       }
       loadingContent="loading..."
