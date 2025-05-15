@@ -5,21 +5,35 @@ import { NextCapitalComponent } from '@nextcapital/client';
 import SolutionSpecificDemo from '../components/SolutionSpecificDemo';
 
 import Page from '../components/Page';
+import SimpleSpacer from '../components/SimpleSpacer';
 import WidgetBox from '../components/WidgetBox';
 
-const RetirementReportCardWidget = () => (
-  <WidgetBox width="small" height="auto">
-    <NextCapitalComponent
-      getEmbed={
-        (client) => new client.RetirementReportCard({
-          onButtonClick: (targetState) => window.alert(
-            `button clicked! expected to perform SSO for target state: ${targetState}`
-          )
-        })
-      }
-      loadingContent="loading..."
-    />
-  </WidgetBox>
+const RetirementReportCardWidget = ({ context = null, title }) => (
+  <div>
+    <h2>{ title }</h2>
+    <WidgetBox width="small" height="auto">
+      <NextCapitalComponent
+        getEmbed={
+          (client) => new client.RetirementReportCard({
+            context,
+            onButtonClick: (targetState) => window.alert(
+              `button clicked! expected to perform SSO for target state: ${targetState}`
+            )
+          })
+        }
+        loadingContent="loading..."
+      />
+    </WidgetBox>
+  </div>
+);
+
+const AllRetirementReportCardContexts = () => (
+  <SimpleSpacer>
+    <RetirementReportCardWidget title="Full Retirement Report Card (No Context)" />
+    <RetirementReportCardWidget context="funding" title="Funding Context" />
+    <RetirementReportCardWidget context="savings" title="Savings Context" />
+    <RetirementReportCardWidget context="assetAllocation" title="Asset Allocation Context" />
+  </SimpleSpacer>
 );
 
 /**
@@ -28,9 +42,9 @@ const RetirementReportCardWidget = () => (
  * @returns {React.Component} The demo element.
  */
 const RetirementReportCardDemo = () => (
-  <Page fullScreen>
+  <Page>
     <SolutionSpecificDemo
-      getChildren={ () => <RetirementReportCardWidget /> }
+      getChildren={ () => <AllRetirementReportCardContexts /> }
       module="RetirementReportCard"
     />
   </Page>
