@@ -16,7 +16,7 @@ window._ = _;
 // The NextCapital Client should be immediately configured, before any other code runs
 configure({
   environment: {
-    environmentClass: ENVIRONMENT_CLASS[NC_ENV],
+    environmentClass: ENVIRONMENT_CLASS[NC_ENV], // `NC_ENV` defined via webpack
     accessType: ENVIRONMENT_ACCESS_TYPE.PROXY,
     trackingEnabled: true,
     endpoint: '/api'

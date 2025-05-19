@@ -19,6 +19,7 @@ import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
 import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
+import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
 
@@ -43,6 +44,11 @@ const demos = [
     name: 'Retirement Report Card',
     route: '/demos/retirement-report-card',
     component: RetirementReportCardDemo
+  },
+  {
+    name: 'Express Workplace Enrollment',
+    route: '/demos/express-workplace-enrollment',
+    component: ExpressWorkplaceEnrollmentDemo
   },
   {
     name: 'Copy Helper',
