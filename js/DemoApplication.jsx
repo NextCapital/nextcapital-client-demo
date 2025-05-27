@@ -20,6 +20,7 @@ import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
 import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
+import StubExpressWorkplaceEnrollmentDemo from './pages/StubExpressWorkplaceEnrollmentDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
 
@@ -49,6 +50,11 @@ const demos = [
     name: 'Express Workplace Enrollment',
     route: '/demos/express-workplace-enrollment',
     component: ExpressWorkplaceEnrollmentDemo
+  },
+  {
+    name: 'Express Workplace Enrollment - Stub',
+    route: '/demos/express-workplace-enrollment-stub',
+    component: StubExpressWorkplaceEnrollmentDemo
   },
   {
     name: 'Copy Helper',
