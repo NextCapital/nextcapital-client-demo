@@ -144,6 +144,10 @@ body {
     max-width: 800px;
   }
 
+  &.width-large {
+    max-width: 1024px;
+  }
+
   &.width-full {
     width: 100%;
   }

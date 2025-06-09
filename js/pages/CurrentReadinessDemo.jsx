@@ -12,7 +12,8 @@ const CurrentReadinessWidget = () => (
     <NextCapitalComponent
       getEmbed={
         (client) => new client.CurrentReadiness({
-          onNavigateToFullExperience: () => window.alert('personalize button clicked!')
+          onNavigateToFullExperience: () => window.alert('personalize button clicked!'),
+          onError: () => console.error('CurrentReadiness Demo: error occurred!')
         })
       }
       loadingContent="loading..."

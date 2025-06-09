@@ -18,6 +18,7 @@ import Page from './components/Page';
 import DemoHome from './pages/DemoHome';
 import EmbeddedPlanning from './pages/EmbeddedPlanningDemo';
 import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
+import CurrentReadinessInteractiveDemo from './pages/CurrentReadinessInteractiveDemo';
 import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
 import StubExpressWorkplaceEnrollmentDemo from './pages/StubExpressWorkplaceEnrollmentDemo';
@@ -40,6 +41,11 @@ const demos = [
     name: 'Current Readiness',
     route: '/demos/current-readiness',
     component: CurrentReadinessDemo
+  },
+  {
+    name: 'Current Readiness (Interactive)',
+    route: '/demos/current-readiness-interactive',
+    component: CurrentReadinessInteractiveDemo
   },
   {
     name: 'Retirement Report Card',
