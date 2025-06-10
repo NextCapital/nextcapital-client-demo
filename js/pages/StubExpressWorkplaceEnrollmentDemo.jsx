@@ -15,7 +15,7 @@ const StubExpressWorkplaceEnrollmentWidget = () => (
         onNavigateToFullExperience: () => window.alert('should perform SSO to full experience'),
         onEnrolled: () => console.log('ExpressWorkplaceEnrollment Demo: enrollment fully completed!'),
         onEnrollmentStart: () => console.log('ExpressWorkplaceEnrollment Demo: enrollment started!'),
-        onError: () => console.log('ExpressWorkplaceEnrollment Demo: error occurred!')
+        onError: () => console.error('ExpressWorkplaceEnrollment Demo: error occurred!')
       })
     }
     loadingContent="loading..."

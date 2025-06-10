@@ -18,7 +18,8 @@ const RetirementReportCardWidget = ({ context = null, title }) => (
             context,
             onButtonClick: (targetState) => window.alert(
               `button clicked! expected to perform SSO for target state: ${targetState}`
-            )
+            ),
+            onError: () => console.error('RetirementReportCard Demo: error occurred!')
           })
         }
         loadingContent="loading..."
