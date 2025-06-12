@@ -13,6 +13,7 @@ const CurrentReadinessWidget = () => (
       getEmbed={
         (client) => new client.CurrentReadiness({
           onNavigateToFullExperience: () => window.alert('personalize button clicked!'),
+          onNavigateToInteractive: () => window.alert('do better button clicked!'),
           onError: () => console.error('CurrentReadiness Demo: error occurred!')
         })
       }
