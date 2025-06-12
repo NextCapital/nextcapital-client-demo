@@ -14,6 +14,7 @@ const CurrentReadinessWidget = () => (
         (client) => new client.CurrentReadiness({
           onNavigateToFullExperience: () => window.alert('personalize button clicked!'),
           onNavigateToInteractive: () => window.alert('do better button clicked!'),
+          onNavigateToSaveMoreNow: () => window.alert('save more now button clicked!'),
           onError: () => console.error('CurrentReadiness Demo: error occurred!')
         })
       }
