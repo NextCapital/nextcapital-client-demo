@@ -22,6 +22,10 @@ import CurrentReadinessInteractiveDemo from './pages/CurrentReadinessInteractive
 import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
 import StubExpressWorkplaceEnrollmentDemo from './pages/StubExpressWorkplaceEnrollmentDemo';
+import {
+  ManagedCustomWorkplaceEnrollmentDemo,
+  PointInTimeCustomWorkplaceEnrollmentDemo
+} from './pages/CustomWorkplaceEnrollmentDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
 
@@ -61,6 +65,16 @@ const demos = [
     name: 'Express Workplace Enrollment - Stub',
     route: '/demos/express-workplace-enrollment-stub',
     component: StubExpressWorkplaceEnrollmentDemo
+  },
+  {
+    name: 'Custom Workplace Enrollment (MA)',
+    route: '/demos/custom-workplace-enrollment-ma',
+    component: ManagedCustomWorkplaceEnrollmentDemo
+  },
+  {
+    name: 'Custom Workplace Enrollment (PITA)',
+    route: '/demos/custom-workplace-enrollment-pita',
+    component: PointInTimeCustomWorkplaceEnrollmentDemo
   },
   {
     name: 'Copy Helper',
