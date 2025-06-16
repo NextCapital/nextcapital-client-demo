@@ -2,6 +2,7 @@
   "allowCompoundWords": true,
   "ignoreWords": [
     "UX",
+    "RK",
 
     "argify",
     "bgcolor",
