@@ -21,7 +21,6 @@ import CurrentReadinessDemo from './pages/CurrentReadinessDemo';
 import CurrentReadinessInteractiveDemo from './pages/CurrentReadinessInteractiveDemo';
 import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
-import StubExpressWorkplaceEnrollmentDemo from './pages/StubExpressWorkplaceEnrollmentDemo';
 import {
   ManagedCustomWorkplaceEnrollmentDemo,
   PointInTimeCustomWorkplaceEnrollmentDemo
@@ -60,11 +59,6 @@ const demos = [
     name: 'Express Workplace Enrollment',
     route: '/demos/express-workplace-enrollment',
     component: ExpressWorkplaceEnrollmentDemo
-  },
-  {
-    name: 'Express Workplace Enrollment - Stub',
-    route: '/demos/express-workplace-enrollment-stub',
-    component: StubExpressWorkplaceEnrollmentDemo
   },
   {
     name: 'Custom Workplace Enrollment (MA)',
