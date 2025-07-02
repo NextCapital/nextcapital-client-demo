@@ -23,7 +23,8 @@ import RetirementReportCardDemo from './pages/RetirementReportCardDemo';
 import ExpressWorkplaceEnrollmentDemo from './pages/ExpressWorkplaceEnrollmentDemo';
 import {
   ManagedCustomWorkplaceEnrollmentDemo,
-  PointInTimeCustomWorkplaceEnrollmentDemo
+  PointInTimeCustomWorkplaceEnrollmentDemo,
+  CustomWorkplaceEnrollmentEnrollMethodDemo
 } from './pages/CustomWorkplaceEnrollmentDemo';
 import CopyHelperDemo from './pages/CopyHelperDemo';
 import ColorService from './pages/ColorService';
@@ -69,6 +70,11 @@ const demos = [
     name: 'Custom Workplace Enrollment (PITA)',
     route: '/demos/custom-workplace-enrollment-pita',
     component: PointInTimeCustomWorkplaceEnrollmentDemo
+  },
+  {
+    name: 'Custom Workplace Enrollment (Enroll Method)',
+    route: '/demos/custom-workplace-enrollment-enroll-method',
+    component: CustomWorkplaceEnrollmentEnrollMethodDemo
   },
   {
     name: 'Copy Helper',
