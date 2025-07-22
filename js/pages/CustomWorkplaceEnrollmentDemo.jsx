@@ -74,6 +74,7 @@ export const PointInTimeCustomWorkplaceEnrollmentDemo = () => (
 
 const CustomWorkplaceEnrollmentEnrollMethodDemoContent = () => {
   const [businessProcessId, setBusinessProcessId] = useState('');
+  const [referenceId, setReferenceId] = useState('');
   const [embed, setEmbed] = useState(null);
   const [isEnrolling, setIsEnrolling] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -97,7 +98,7 @@ const CustomWorkplaceEnrollmentEnrollMethodDemoContent = () => {
     setIsEnrolling(true);
 
     try {
-      await embed.enroll(businessProcessId);
+      await embed.enroll(businessProcessId, referenceId);
       setIsSuccess(true);
     } catch (ex) {
       console.error(ex);
@@ -113,7 +114,7 @@ const CustomWorkplaceEnrollmentEnrollMethodDemoContent = () => {
 
   return (
     <div>
-      <p>Enter a business process ID below to trigger an enrollment.</p>
+      <p>Enter a business process ID and reference ID below to trigger an enrollment.</p>
       <input
         type="text"
         value={ businessProcessId }
@@ -121,10 +122,17 @@ const CustomWorkplaceEnrollmentEnrollMethodDemoContent = () => {
         placeholder="enter business process id..."
         disabled={ isEnrolling || isSuccess || error }
       />
+      <input
+        type="text"
+        value={ referenceId }
+        onChange={ ({ target }) => setReferenceId(target.value) }
+        placeholder="enter reference id..."
+        disabled={ isEnrolling || isSuccess || error }
+      />
       <button
         onClick={ submit }
         type="submit"
-        disabled={ isEnrolling || isSuccess || error || !businessProcessId }
+        disabled={ isEnrolling || isSuccess || error || !businessProcessId || !referenceId }
       >
         Submit
       </button>
