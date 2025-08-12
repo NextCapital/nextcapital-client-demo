@@ -15,7 +15,11 @@ const CurrentReadinessInteractiveWidget = () => (
           onNavigateToFullExperience: () => window.alert('should perform SSO to full experience'),
           onNavigateToContributions: () => window.alert('should navigate to the contributions flow'),
           onNavigateToSaveMoreNow: () => window.alert('should navigate to the boost your retirement flow'),
-          onError: () => console.error('CurrentReadiness Demo: error occurred!')
+          onError: () => console.error('CurrentReadiness Demo: error occurred!'),
+
+          // will scope to first eligible RK account when null, provide in real life
+          clientIdentifier: null,
+          planIdentifier: null
         })
       }
       loadingContent="loading..."
