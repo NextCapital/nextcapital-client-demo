@@ -8,3 +8,6 @@ dist
 .sass-cache
 
 minimal-demo/dist
+TODO.md
+PROMPT.md
+PROMPTS.md
