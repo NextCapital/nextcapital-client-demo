@@ -14,7 +14,7 @@ A simple application that demonstrates how to integrate with the NextCapital Cli
 
 Full documentation for the `@nextcapital/client` package can be found at the wiki:
 
-https://github.com/nextcapital/nextcapital-client-demo/wiki
+<https://github.com/nextcapital/nextcapital-client-demo/wiki>
 
 ## Getting Started
 
@@ -77,6 +77,7 @@ Example: `npm run start -- --solution=nextcapital --exchange-token=<base64> --po
 - The minimal session handling logic lives at `server/session.js`
 
 ## Minimal Demo
+
 The [/minimal-demo](minimal-demo) folder contains an example consisting of:
 
 - `package.json` file to describe dependencies needed to build and run the client
@@ -97,7 +98,7 @@ As you can see, Webpack will bundle React and all other dependencies together in
 
 In general, when `webpack-cli` is installed via `package.json`, you can invoke it as:
 
-```
+```bash
 npx webpack --any --args --can --go --here
 ```
 

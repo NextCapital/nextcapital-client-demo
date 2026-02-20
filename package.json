@@ -19,8 +19,9 @@
     "license": "npm run license:production && npm run license:development",
     "license:development": "license-checker-rseidelsohn --summary --development --failOn='AGPL;CAL;CC BY-NC;CC BY-SA;CC BY-NC-SA;CC BY-NC-ND;CPAL;CPOL;EUPL;GPL;LGPL;NGPL;OSL;QPL;SISSL;Sleepycat;SSPL'",
     "license:production": "license-checker-rseidelsohn --summary --production --failOn='AGPL;CAL;CC BY-NC;CC BY-SA;CC BY-NC-SA;CC BY-NC-ND;CPAL;CPOL;EUPL;GPL;LGPL;NGPL;OSL;QPL;SISSL;Sleepycat;SSPL'",
-    "lint": "npm run lint:js && npm run lint:spelling",
+    "lint": "npm run lint:js && npm run lint:markdown && npm run lint:spelling",
     "lint:js": "eslint \"js/**/*.js?(x)\" --cache",
+    "lint:markdown": "markdownlint \"**/*.md\" \"!node_modules/**\" \"!coverage/**\" --ignore-path .gitignore",
     "lint:spelling": "cspell \"js/**/*.js?(x)\" --no-progress",
     "start": "npm run clean && npm run copy && npm run build:styles && node ./build-run.js",
     "start:dev": "npm run start -- --env=development"
@@ -54,6 +55,7 @@
     "eslint": "^9.25.1",
     "eslint-plugin-import": "^2.31.0",
     "license-checker-rseidelsohn": "^4.4.2",
+    "markdownlint-cli": "^0.47.0",
     "sass": "^1.87.0",
     "webpack": "^5.99.7",
     "webpack-cli": "^6.0.1"
