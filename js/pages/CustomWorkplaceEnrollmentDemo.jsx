@@ -14,7 +14,9 @@ const buildCustomEnrollmentEmbed = (client, productKind) => (
     stagedContributions: {
       taxDeferred: {
         basis: 'percent',
-        value: 0.02
+        value: 0.02,
+        escalationRate: 0.01,
+        targetRate: 0.10
       },
       afterTaxDeferred: {
         basis: 'percent',
