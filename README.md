@@ -104,6 +104,10 @@ npx webpack --any --args --can --go --here
 
 Ample documentation on webpack, babel, React. JSX, etc... exists elsewhere online if needed.
 
+## Deep-Dive Documentation
+
+Architecture documentation, component deep-dives, integration guides, and onboarding materials are in [`.github/docs/`](.github/docs/README.md). These docs are written for both human developers and AI agents working in this codebase.
+
 ## Have questions?
 
 Feel free to ask! We will be glad to answer any question.
