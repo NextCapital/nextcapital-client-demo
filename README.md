@@ -10,6 +10,12 @@ A simple application that demonstrates how to integrate with the NextCapital Cli
 👉 NOTE: This repo is public! 👈
 -->
 
+## IMPORTANT NOTE
+
+This repo is a BLC-org clone of the public `@nextcapital/nextcapital-client-demo` repo. This repo is intended for development on GS dev workspaces, since the `@nextcapital` GitHub org is not allowed there.
+
+As such, since the public repo is what our partners actually consume, *any changes here must be mirrored to the public GitHub org after merge*! This mirroring must be done via your MacBook.
+
 ## Full Documentation
 
 Full documentation for the `@nextcapital/client` package can be found at the wiki:
@@ -39,6 +45,10 @@ By default, the `nextcapital` solution will be used if one is not specified.
 Additionally, you may specify an environment with `env`:
 
 - `npm run start -- --solution=nextcapital --exchange-token=<base64> --env=uat`
+
+Some solutions have support for multiple languages, and this extends to NextCapital Client. The correct `lang` argument can be passed into the `configure` call on the demo via the `--lang` argument:
+
+- `npm run start -- --solution=nextcapital --exchange-token=<base64> --lang=es`
 
 By default, the `sit` environment will be used. See [server/environments.json](server/environments.json) for a list available environments.
 

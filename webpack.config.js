@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 const getAbsolutePath = (relativePath) => path.resolve(__dirname, relativePath);
 
-module.exports = ({ env = 'sit', solution = 'nextcapital' }) => ({
+module.exports = ({ env = 'sit', solution = 'nextcapital', lang = 'en' }) => ({
   entry: path.resolve(__dirname, 'js/index.jsx'),
   output: {
     filename: 'demo.js',
@@ -32,7 +32,8 @@ module.exports = ({ env = 'sit', solution = 'nextcapital' }) => ({
   plugins: [
     new webpack.DefinePlugin({ // allow us to use the solution ID in code
       SOLUTION_ID: JSON.stringify(solution),
-      NC_ENV: JSON.stringify(_.toUpper(env))
+      NC_ENV: JSON.stringify(_.toUpper(env)),
+      LANG: JSON.stringify(lang)
     })
   ],
   devtool: 'source-map',

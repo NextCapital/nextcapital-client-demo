@@ -19,7 +19,8 @@ module.exports = [
       },
       globals: {
         'NC_ENV': true,
-        'SOLUTION_ID': true
+        'SOLUTION_ID': true,
+        'LANG': true
       }
     },
     settings: {
