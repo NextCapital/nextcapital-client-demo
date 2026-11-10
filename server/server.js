@@ -5,7 +5,7 @@ const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const livereload = require('livereload');
 
-const ApiProxy = require('./proxy');
+const { ApiProxy, injectAuthHeader } = require('./proxy');
 const Session = require('./session');
 const args = require('./args');
 
@@ -41,9 +41,9 @@ app.get('/', (req, res) => {
 // Setup static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-// The actual API proxy. `Session.middleware` will acquire a token on the first request before
-// handing control over the to proxy.
-app.use('/api', Session.middleware.bind(Session), ApiProxy);
+// The actual API proxy. `Session.middleware` will acquire a token on the first request, then
+// `injectAuthHeader` stamps it onto the request before handing control over to the proxy.
+app.use('/api', Session.middleware.bind(Session), injectAuthHeader, ApiProxy);
 
 // Start the server
 app.listen(args.port, () => console.log(`server ready on port ${args.port}`));

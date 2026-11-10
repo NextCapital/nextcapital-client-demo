@@ -25,6 +25,11 @@ const args = yargs(hideBin(process.argv))
     default: 'nextcapital',
     describe: 'solution to use'
   })
+  .options('lang', {
+    type: 'string',
+    default: 'en',
+    describe: 'the language to use for the solution (solution must support the language)'
+  })
   .option('exchangeToken', {
     type: 'string',
     describe: 'jwt to use for bearer exchange'
@@ -43,7 +48,7 @@ const args = yargs(hideBin(process.argv))
 // start a watching webpack process
 const webpackProcess = spawn(
   `npx`,
-  `webpack --env env=${args.env} --env solution=${args.solution} --watch --progress`.split(' '),
+  `webpack --env env=${args.env} --env solution=${args.solution} --env lang=${args.lang} --watch --progress`.split(' '),
   { stdio: 'inherit' }
 );
 
